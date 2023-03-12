@@ -1,9 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 
 body{
   position: relative;
@@ -35,15 +41,17 @@ body{
 
 li{
   list-style: none;
-  
+  user-select: none;
 }
 
 
+.links{
+  margin-left: 3%;
+}
 .links a {
   text-decoration: none;
   color : #ffffff;
   font-size: 1rem;
-  
 }
 
 .navbar a:hover {
@@ -65,6 +73,7 @@ header{
   align-items: center;
   justify-content: space-between;
   margin-bottom: 80px;
+  user-select: none;
 }
 
 .navbar li{
@@ -72,9 +81,8 @@ header{
   align-items: center;
 }
 .navbar .logo img {
-  margin-top: 2%;
-  width: 50%;
-  width: 50%;
+  width: 80px;
+  width: 80px;
 }
 
 .navbar .links{
@@ -86,38 +94,37 @@ header{
 .action_btn {
   background-color: #D48042;
   color: #ffffff;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   border-radius: 25px;
-  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.1s ease;
-  border: none;
+  border-color: #D48042;
+  box-shadow: 2px 2px rgb(0, 0, 0);
+  user-select: none;
 }
 
-#btn2 {
+#btn_contact2 {
   background-color: #ffffff;
   color: #D48042;
 }
 
 
-.navbar .action_btn{
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-}
-
 .action_btn:hover {
   transform: scale(1.05);
-  color: #ffffff !important;
+  background-color: #ffffff;
+  color: #D48042;
 }
 
 .action_btn:active {
-  transform: scale(0.95);
+  transform: scale(1);
 }
 
 #btn2:hover {
   transform: scale(1.05);
-  color: #D48042 !important;
+  color: #ffffff; 
+  background-color: #D48042;
 }
 
 #btn2:active {
@@ -192,6 +199,7 @@ header{
   width: 30%;
   margin: 0 1.5%;
   align-items: center;
+  
 }
 
 .sect2 .image-container img {
@@ -199,6 +207,7 @@ header{
   aspect-ratio: 1/1;
   border-radius: 15px;
   object-fit: cover;
+  
 }
 
 .sect2 .image-container h1 {
@@ -229,6 +238,7 @@ header{
   display: inline-block;
   border-radius: 100%;
   overflow: hidden;
+  user-select: none;
 }
 
 .sect3 .image-container img{
@@ -237,6 +247,7 @@ header{
   object-fit: cover;
   border-radius: 100%;
   border: 5px solid #ffffff;
+  
 }
 
 
@@ -264,6 +275,7 @@ header{
   font-size: 1.5em;
   color: #ffffff;
   margin: 0 auto;
+  float: left;
 }
 
 .sect4 .container h2 {
@@ -361,6 +373,7 @@ footer {
 
 .footer-container li{
   margin-bottom: 10px;
+  user-select: text;
 }
 
 .footer-container a:hover {
@@ -369,4 +382,70 @@ footer {
 
 footer .p{
   text-align: center;
+}
+
+
+.highlight {
+  color: red;
+  font-size: 1.5rem;
+  transition: font-size 0.3s ease-in-out;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.575);
+  z-index: 999;
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 30px;
+  background-color: #2087cc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+}
+
+.popup h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 2%;
+}
+
+.popup p{
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.popup img {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-bottom: 2%;
+}
+
+.popup .close-popup{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup .close-popup:hover {
+  transform: scale(1.05);
+}
+
+.popup .close-popup:active {
+  transform: scale(0.95);
 }

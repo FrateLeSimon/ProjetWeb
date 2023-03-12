@@ -5,19 +5,33 @@
         <title>Trouve ton StaJ !</title>
         <link rel="icon" type="image/svg" href="./img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./assets/vendors/fontawesome/css/all.min.css">
     </head>
     <body>
       <header>
         <div class="navbar">
             <div class="logo"><a href="page_vitrine.html"><img src="./img/logo/gros_logo.svg" ></a></div>
             <ul class="links">
-                <li><a href="#" a>Nous contacter</a></li>
-                <li><a href="#" a>A propos</a></li>
+                <li><a href="#contact" id="btn_contact1" a>Nous contacter</a></li>
+                <li><a href="#" id="btn_popup1" a>À propos</a></li>
                 <li><a href="#" a>Se connecter</a></li>
                 <li><button href="#" class="action_btn" a>S'inscrire</button></li>
             </ul>
         </div>
       </header>
+
+      <div class="overlay"></div>
+      <section class="popup">
+        <span class="close-popup"><i class="fas fa-times"></i></span>
+        <h1>Le projet : </h1>
+        <p>Aujourd'hui, les étudiants effectuent leurs recherches de stage en entreprise en activant leurs réseaux personnels et professionnels (LinkedIn, anciennes promotions, etc.), en postulant à des offres.
+          Afin de rendre cette étape de recherche de stage plus facile et pratique, il serait nécessaire de disposer d'un site web qui regroupe différentes offres de stage, et qui permettra de stocker les données des entreprises ayant déjà pris un stagiaire, ou qui en recherchent un.</p>
+        <br>
+        <h1>Notre équipe : </h1>
+        <img src="./img/vitrine/equipe.jpg" alt="img_equipe">
+        <p>GERARD Paul, BEHRA Hugo, GULDEN Simon et PERROUAS Sylvain </p>
+      </section>
+
       <section class="sect1">
         <div class="container">
           <h1>Meilleur site de recherche de stage</h1>
@@ -72,7 +86,7 @@
           <div class="button-container">
             <ul>
               <li><button href="#" class="action_btn">S'inscrire</button></li>
-              <li><button  href="#" class="action_btn" id = "btn2">Nous contacter</button></li>
+              <li><button  href="#contact" class="action_btn" id = "btn_contact2">Nous contacter</button></li>
             </ul>
           </div>
         </div>
@@ -88,13 +102,13 @@
             <h3>Liens utiles</h3>
             <ul>
               <li><a href="#">Accueil</a></li>
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">L'équipe</a></li>
+              <li><a href="#" id="btn_popup2">À propos</a></li>
+              <li><a href="#">Se connecter</a></li>
               <li><a href="#">S'inscrire</a></li>
             </ul>
           </div>
-          <div class="col3">
-            <h3>Nous contacter</h3>
+          <div id="contact" class="col3">
+            <h3 >Nous contacter</h3>
             <ul>
               <li>Adresse: 2 All. des Foulons, 67380 Lingolsheim</li>
               <li>Téléphone: +33 6 59 63 96 92</li>
@@ -105,6 +119,8 @@
         <hr class="little-hr">
           <p class="p">©2023 - Tous droits réservés StaJ</p>
       </footer>
+      <script src="./assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+      <script src="script.js"></script>
     </body>
 </html>
       <footer>
