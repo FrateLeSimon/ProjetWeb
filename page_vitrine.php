@@ -10,7 +10,7 @@
     <body>
       <header>
         <div class="navbar">
-            <div class="logo"><a href="page_vitrine.html"><img src="./img/logo/gros_logo.svg" ></a></div>
+            <div class="logo"><a href="page_vitrine.php"><img src="./img/logo/gros_logo.svg" ></a></div>
             <ul class="links">
                 <li><a href="#contact" id="btn_contact1" a>Nous contacter</a></li>
                 <li><a href="#" id="btn_popup1" a>À propos</a></li>
@@ -123,3 +123,4 @@
       <script src="script.js"></script>
     </body>
 </html>
+

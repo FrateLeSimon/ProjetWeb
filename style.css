@@ -96,12 +96,11 @@ header{
   color: #ffffff;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  border-radius: 25px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.1s ease;
   border-color: #D48042;
-  box-shadow: 2px 2px rgb(0, 0, 0);
   user-select: none;
 }
 
@@ -388,7 +387,7 @@ footer .p{
 .highlight {
   color: red;
   font-size: 1.5rem;
-  transition: font-size 0.3s ease-in-out;
+  transition: font-size 0.2s ease-in-out;
 }
 
 .overlay {
