@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Trouve ton StaJ !</title>
-        <link rel="icon" type="image/svg" href="./img/logo/petit_logo.svg">
+        <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="./assets/vendors/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
     </head>
     <body>
       <header>
         <div class="navbar">
-            <div class="logo"><a href="page_vitrine.php"><img src="./img/logo/gros_logo.svg" ></a></div>
+            <div class="logo"><a href="page_vitrine.php"><img src="../../img/logo/gros_logo.svg" ></a></div>
             <ul class="links">
                 <li><a href="#contact" id="btn_contact1" a>Nous contacter</a></li>
                 <li><a href="#" id="btn_popup1" a>À propos</a></li>
-                <li><a href="#" a>Se connecter</a></li>
-                <li><button href="#" class="action_btn" a>S'inscrire</button></li>
+                <li><a href="../login/login.php" a>Se connecter</a></li>
+                <li><a href="../signup/signup.php" class="action_btn" a>S'inscrire</a></li>
             </ul>
         </div>
       </header>
@@ -28,7 +28,7 @@
           Afin de rendre cette étape de recherche de stage plus facile et pratique, il serait nécessaire de disposer d'un site web qui regroupe différentes offres de stage, et qui permettra de stocker les données des entreprises ayant déjà pris un stagiaire, ou qui en recherchent un.</p>
         <br>
         <h1>Notre équipe : </h1>
-        <img src="./img/vitrine/equipe.jpg" alt="img_equipe">
+        <img src="../../img/vitrine/equipe.jpg" alt="img_equipe">
         <p>GERARD Paul, BEHRA Hugo, GULDEN Simon et PERROUAS Sylvain </p>
       </section>
 
@@ -37,10 +37,10 @@
           <h1>Meilleur site de recherche de stage</h1>
           <p>Commencer à rechercher votre stage tout de suite :</p>
           <li>
-            <button href="#" class="action_btn" a>Se connecter</button>
-            <button href="#" class="action_btn" a>S'inscrire</button>
+            <a href="../login/login.php" class="action_btn" a>Se connecter</a>
+            <a href="../signup/signup.php" class="action_btn" a>S'inscrire</a>
           </li>
-          <img src="./img/vitrine/img1.jpg" alt="img1">
+          <img src="../../img/vitrine/img1.jpg" alt="img1">
         </div>
       </section>
 
@@ -48,15 +48,15 @@
 
       <section class="sect2">
         <div class="image-container">
-          <img src="./img/vitrine/img2.jpg" alt="img2">
+          <img src="../../img/vitrine/img2.jpg" alt="img2">
           <h1>Recherche de stage</h1>
         </div>
         <div class="image-container">
-          <img src="./img/vitrine/img3.jpg" alt="img3">
+          <img src="../../img/vitrine/img3.jpg" alt="img3">
           <h1>Création d’offres</h1>
         </div>
         <div class="image-container">
-          <img src="./img/vitrine/img4.jpg" alt="img4">
+          <img src="../../img/vitrine/img4.jpg" alt="img4">
           <h1>Gestion des statistiques</h1>
         </div>
       </section>
@@ -68,7 +68,7 @@
           “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.”
         </h1>
         <div class="image-container">
-          <img src="./img/vitrine/img5.jpg" alt="img5">
+          <img src="../../img/vitrine/img5.jpg" alt="img5">
         </div>
         <p>
           Sandel Olivier,<br>Responsable des Partenariats et de la Vie du Campus CESI
@@ -85,8 +85,8 @@
           </div>
           <div class="button-container">
             <ul>
-              <li><button href="#" class="action_btn">S'inscrire</button></li>
-              <li><button  href="#contact" class="action_btn" id = "btn_contact2">Nous contacter</button></li>
+              <li><a href="../signup/signup.php" class="action_btn">S'inscrire</a></li>
+              <li><a  href="#contact" class="action_btn" id = "btn_contact2">Nous contacter</a></li>
             </ul>
           </div>
         </div>
@@ -95,7 +95,7 @@
       <footer>
         <div class="footer-container">
           <div class="col1">
-            <img src="./img/logo/gros_logo.svg" alt="logo">
+            <img src="../../img/logo/gros_logo.svg" alt="logo">
             <p>Construire votre avenir</p>
           </div>
           <div class="col2">
@@ -103,8 +103,8 @@
             <ul>
               <li><a href="#">Accueil</a></li>
               <li><a href="#" id="btn_popup2">À propos</a></li>
-              <li><a href="#">Se connecter</a></li>
-              <li><a href="#">S'inscrire</a></li>
+              <li><a href="../login/login.php">Se connecter</a></li>
+              <li><a href="../signup/signup.php">S'inscrire</a></li>
             </ul>
           </div>
           <div id="contact" class="col3">
@@ -119,7 +119,7 @@
         <hr class="little-hr">
           <p class="p">©2023 - Tous droits réservés StaJ</p>
       </footer>
-      <script src="./assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+      <script src="../../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
       <script src="script.js"></script>
     </body>
 </html>

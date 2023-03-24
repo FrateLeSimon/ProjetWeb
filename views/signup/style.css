@@ -1,0 +1,166 @@
+body {
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  background-color: #0f1620;
+  background-image: url("../../img/vitrine/fond.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  max-width: 500px;
+  margin: 100px auto 100px auto;
+  margin-top: 70px;
+  padding: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.form-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  }
+
+.form-group {
+    margin-bottom: 10px;
+    align-items: center ;
+  }
+
+.form-group label {
+    margin-top: 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 0 auto; 
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+p{
+  margin-bottom: 50px;
+}
+
+label{
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto 20px auto;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #D48042;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto 20px auto;
+  margin-top: 30px;
+  padding: 10px;
+  width: 100%;
+  
+}
+
+input[type="submit"]:hover {
+  background-color: #bf692c;
+  transform: scale(1.01);
+}
+
+input[type="submit"]:active {
+  transform: scale(0.99);
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #D48042 ;
+  border: none;
+  color: #fff;
+}
+
+.container .return{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #D48042;
+}
+
+.container .return:hover {
+  transform: scale(1.20);
+}
+
+
+
+.form-group label .required {
+  color: red;
+  margin-left: 5px;
+}
+
+.message {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  
+}
+
+.message a{
+text-decoration: none;
+
+}
+  
+
+#page2{
+  display: none;
+}

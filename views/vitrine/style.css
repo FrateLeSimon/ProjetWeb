@@ -7,7 +7,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 
@@ -17,7 +17,7 @@ body{
   min-height: 120vw;
   max-height: 225vw;
   background-color: #0f1620;
-  background-image: url("./img/vitrine/fond.jpg");
+  background-image: url("../../img/vitrine/fond.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -92,6 +92,7 @@ header{
 
 
 .action_btn {
+  text-decoration: none;
   background-color: #D48042;
   color: #ffffff;
   padding: 0.5rem 1rem;
@@ -99,7 +100,6 @@ header{
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.1s ease;
   border-color: #D48042;
   user-select: none;
 }
@@ -111,24 +111,19 @@ header{
 
 
 .action_btn:hover {
-  transform: scale(1.05);
   background-color: #ffffff;
   color: #D48042;
 }
 
 .action_btn:active {
-  transform: scale(1);
+  transform: scale(0.98);
 }
 
-#btn2:hover {
-  transform: scale(1.05);
+#btn_contact2:hover {
   color: #ffffff; 
-  background-color: #D48042;
+  background-color: #D48042; 
 }
 
-#btn2:active {
-  transform: scale(0.95);
-}
 
 .sect1 .container {
   position: relative;
