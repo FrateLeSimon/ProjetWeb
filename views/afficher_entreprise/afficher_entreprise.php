@@ -1,7 +1,5 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
 
-<?php //include '../navfooter/navbar/navbar.php'; ?>
-
 <html>
     <head>
         <title>StaJ Login</title>
@@ -13,13 +11,23 @@
     <body>
 
     <?php
+    echo "<form action='afficher_entreprise.php' method='get'>
+        <input type='text' name='search' placeholder='Rechercher une entreprise...'>
+        <input type='submit' value='Rechercher'>
+    </form>";
+
     $entrepriseController = new EntrepriseController();
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $records_per_page = 6;
     $start_from = ($page-1) * $records_per_page;
 
-    $entreprises = $entrepriseController->getEntreprises($start_from, $records_per_page);
+    if (isset($_GET['search'])) {
+        $search_query = $_GET['search'];
+        $entreprises = $entrepriseController->getEntreprises($start_from, $records_per_page, $search_query);
+    } else {
+        $entreprises = $entrepriseController->getEntreprises($start_from, $records_per_page);
+    }
 
     foreach ($entreprises as $entreprise) {
         echo '<div class="box">';
@@ -39,7 +47,7 @@
         echo "<a href='afficher_entreprise.php?page=$i'>$i</a> ";
     }
 
-
     $entrepriseController->closeConnection();
     ?>
 </body>
+</html>

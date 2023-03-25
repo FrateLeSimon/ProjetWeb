@@ -19,13 +19,22 @@
     $offreController = new OffreController();
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Déterminez le nombre de résultats à récupérer par page
     $records_per_page = 2;
+
+    // Calculez l'index de début pour la récupération des résultats
     $start_from = ($page-1) * $records_per_page;
 
-    $offres = $offreController->getOffres($start_from, $records_per_page);
+    // Récupérez les offres à afficher
+    if (isset($_GET['search'])) {
+        $search_query = $_GET['search'];
+        $offres = $offreController->getOffres($start_from, $records_per_page, $search_query);
+    } else {
+        $offres = $offreController->getOffres($start_from, $records_per_page);
+    }
 
-
-
+    // Parcourez les offres et affichez-les dans des éléments HTML
     foreach ($offres as $offre) {
         echo '<div class="box">';
         echo '<h3>Offre ID: ' . $offre->id_offre . '</h3>';
@@ -38,12 +47,14 @@
         echo '</div>';
     }
 
+    // Affichez les liens de pagination
     $total_records = $offreController->getTotalRecords();
     $total_pages = ceil($total_records / $records_per_page);
     for ($i = 1; $i <= $total_pages; $i++) {
         echo "<a href='afficher_offre.php?page=$i'>$i</a> ";
     }
 
+    // Fermez la connexion
     $offreController->closeConnection();
     ?>
 </body>
