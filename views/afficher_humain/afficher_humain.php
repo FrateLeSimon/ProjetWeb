@@ -10,8 +10,19 @@
     </head>
     <body>
         <?php
+
+        echo "<form method='GET' >
+        <input type='text' name='search' placeholder='Rechercher par nom'>
+        <button type='submit'>Rechercher</button>
+    </form>";
         $humainController = new HumainController();
-        $humains = $humainController->getAllHumains();
+
+    if (isset($_GET['search'])) {
+        $search = $_GET['search'];
+        $humains = $humainController->searchHumains($search);
+    } else {
+    $humains = $humainController->getAllHumains();
+    }
 
         foreach ($humains as $humain) {
             echo '<div class="box">';
@@ -25,7 +36,7 @@
             } else {
                 echo '<p>Type: Admin</p>';
             }
-
+            echo '<a href="../fiche_humain/fiche_humain.php?id=' . $humain->id_humain . '" class="btn-voir-plus">Voir plus</a>';
             echo '</div>';
         }
 

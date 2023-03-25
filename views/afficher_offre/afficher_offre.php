@@ -11,13 +11,20 @@
     <body>
 
     <?php
+        echo "<form action='afficher_offre.php' method='get'>
+        <input type='text' name='search' placeholder='Rechercher une offre...'>
+        <input type='submit' value='Rechercher'>
+    </form>";
+    
     $offreController = new OffreController();
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $records_per_page = 6;
+    $records_per_page = 2;
     $start_from = ($page-1) * $records_per_page;
 
     $offres = $offreController->getOffres($start_from, $records_per_page);
+
+
 
     foreach ($offres as $offre) {
         echo '<div class="box">';
@@ -34,7 +41,7 @@
     $total_records = $offreController->getTotalRecords();
     $total_pages = ceil($total_records / $records_per_page);
     for ($i = 1; $i <= $total_pages; $i++) {
-        echo "<a href='afficher_offres.php?page=$i'>$i</a> ";
+        echo "<a href='afficher_offre.php?page=$i'>$i</a> ";
     }
 
     $offreController->closeConnection();
