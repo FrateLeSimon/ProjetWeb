@@ -1,0 +1,94 @@
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    background-color: #0f1620;
+    background-image: url("../../img/vitrine/fond.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+.container form {
+    position: relative;
+    width: 70%;
+    max-width: 1000px;
+    margin: 40px auto; 
+    background-color: #ffffff;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+  }
+ 
+  .container .title{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+  .container form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .container form input[type="text"],
+  .container form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #D48042;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .container form input[type="file"] {
+    margin-bottom: 1rem;
+  }
+  
+  .container form textarea {
+    height: 150px;
+  }
+  
+  .container form input[type="submit"] {
+    font-size: 1.2rem;
+    background-color: #D48042;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 auto;
+  }
+  
+  .container form input[type="submit"]:hover {
+    background-color: #aa622e;
+    color: #ffffff;
+  }
+  
+  .container form a {
+    font-size: 1.2rem;
+    background-color: #D48042;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin : 0 auto;
+  }
+  
+  .container form a:hover {
+    background-color: #aa622e;
+    color: #ffffff;
+  }
+  
+#return {
+    background-color: #4285f4;
+    color: #fff;
+}
+
+#return:hover {
+    background-color: #2d5faf;
+    color: #ffffff;
+}

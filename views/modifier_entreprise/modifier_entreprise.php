@@ -16,7 +16,9 @@
             $entreprise = $entrepriseController->getEntrepriseById($entreprise_id);
         ?>
 
+        <section class="container">
         <form action="modifier_entreprise.php?id=<?php echo $entreprise_id; ?>" method="post" enctype="multipart/form-data">
+        <h1 class="title">Modifier l'entreprise</h1>
             <label for="nom_entreprise">Nom de l'entreprise :</label>
             <input type="text" name="nom_entreprise" value="<?php echo $entreprise->nom_entreprise; ?>">
 
@@ -35,19 +37,28 @@
             <label for="nom_rue">Nom de rue :</label>
             <input type="text" name="nom_rue" value="<?php echo $entreprise->nom_rue; ?>">
 
+            <label for="pays">Pays :</label>
+            <input type="text" name="pays" value="<?php echo $entreprise->pays; ?>">
+            
+            <label for="code_postal">Code postal :</label>
+            <input type="text" name="code_postal" value="<?php echo $entreprise->code_postal; ?>">  
+
+
+
             <label for="ville">Ville :</label>
             <input type="text" name="ville" value="<?php echo $entreprise->ville; ?>">
 
-            <label for="code_postal">Code postal :</label>
-            <input type="text" name="code_postal" value="<?php echo $entreprise->code_postal; ?>">
-
-            <label for="pays">Pays :</label>
-            <input type="text" name="pays" value="<?php echo $entreprise->pays; ?>">
+            
             <input type="hidden" name="update" value="1">
-            <input type="hidden" name="id_entreprise" value="<?php echo $entreprise->id_entreprise; ?>">
-            <input type="submit" value="Modifier l'entreprise">
-        </form>
 
+            <input type="hidden" name="id_entreprise" value="<?php echo $entreprise->id_entreprise; ?>">
+
+            <input type="submit" value="Modifier l'entreprise">
+
+            <a id="return" href="../afficher_entreprise/afficher_entreprise.php">Retour</a>
+        </form>
+            
+        </section>
         <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $entrepriseController->handleRequest($entreprise_id);
