@@ -2,20 +2,17 @@
 class AuthenticationModel {
     private $conn;
 
-    public function __construct($db_conn) {
-        $this->conn = $db_conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
     }
 
     public function getUserByEmailAndPassword($email, $password) {
-        $stmt = $this->conn->prepare("SELECT * FROM Authentification WHERE login = ?");
-        $stmt->bind_param("s", $email);
+        $stmt = $this->conn->prepare("SELECT Authentification.*, Humain.admin FROM Authentification INNER JOIN Humain ON Authentification.id_humain = Humain.id_humain WHERE Authentification.login = ? AND Authentification.mdp = ?");
+        $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-    
-        // Vérifie si le mot de passe correspond sans utiliser le hachage
-        if ($user && $user["mdp"] === $password) {
-            return $user;
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
         } else {
             return null;
         }

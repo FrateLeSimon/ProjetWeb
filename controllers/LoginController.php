@@ -32,7 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Les informations de l'utilisateur sont correctes, vous pouvez les rediriger vers une autre page (par exemple, la page d'accueil)
             session_start();
             $_SESSION['user'] = $user;
-            header("Location: ../afficher_entreprise/afficher_entreprise.php");
+
+            if (ord($user["admin"]) === 1) {
+                // Si l'utilisateur est un administrateur, redirigez-le vers la page admin
+                header("Location: ../admin_page/admin_page.php");
+            } else {
+                // Sinon, redirigez l'utilisateur vers la page d'accueil normale
+                header("Location: ../afficher_entreprise/afficher_entreprise.php");
+            }
             exit;
         } else {
             $error_message = "E-mail ou mot de passe incorrect.";
@@ -41,3 +48,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Veuillez remplir les champs E-mail et Mot de passe.";
     }
 }
+?>
