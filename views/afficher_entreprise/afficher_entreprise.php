@@ -1,5 +1,6 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
 
+
 <html>
     <head>
         <title>StaJ Login</title>
@@ -75,6 +76,9 @@
         echo '<p>' . $entreprise->code_postal  .'</p>';
         echo '<img src="../../img/entreprise/' . $entreprise->logo . '" alt="image">';
         echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $entreprise->id_entreprise . '">Voir plus</a>';
+   
+        echo '<a href="../modifier_entreprise/modifier_entreprise.php?id=' . $entreprise->id_entreprise . '">Modifier</a>';
+        echo '</div>';
         echo '</div>';
     }
 

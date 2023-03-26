@@ -64,7 +64,10 @@ class EntrepriseController {
         $stmt->bindParam(':id_adresse', $id_adresse);
         $stmt->execute();
     }
-    public function handleRequest() {
+    public function handleRequest($entreprise_id = null) {
+        if (isset($_POST['id_entreprise'])) {
+            $id_entreprise = $_POST['id_entreprise'];
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nom_entreprise = $_POST['nom_entreprise'];
             $secteur_activite = $_POST['secteur_activite'];
@@ -87,7 +90,15 @@ class EntrepriseController {
                 }
             }
     
-            $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+            // Vérifier si c'est une mise à jour ou un ajout
+            if (isset($_POST['update']) && $_POST['update'] == '1' && isset($_POST['id_entreprise'])) {
+                $id_entreprise = $_POST['id_entreprise'];
+                $this->updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+                // Rediriger vers la même page pour actualiser
+                header("Location: modifier_entreprise.php?id=" . $entreprise_id);
+            } else {
+                $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+            }
         }
     }
     
@@ -112,6 +123,36 @@ class EntrepriseController {
         $row = $result->fetch();
         return $row['total'];
     }
+    public function updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
+        // Mettre à jour les données dans la table entreprise
+        $sql = "UPDATE Entreprise SET nom_entreprise = :nom_entreprise, secteur_activite = :secteur_activite, logo = :logo, description = :description WHERE id_entreprise = :id_entreprise";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_entreprise', $id_entreprise);
+        $stmt->bindParam(':nom_entreprise', $nom_entreprise);
+        $stmt->bindParam(':secteur_activite', $secteur_activite);
+        $stmt->bindParam(':logo', $logo);
+        $stmt->bindParam(':description', $description);
+        $stmt->execute();
+    
+        // Récupérer l'ID de l'adresse associée à l'entreprise
+        $sql = "SELECT id_adresse FROM est_localisé_à WHERE id_entreprise = :id_entreprise";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_entreprise', $id_entreprise);
+        $stmt->execute();
+        $id_adresse = $stmt->fetchColumn();
+    
+        // Mettre à jour les données dans la table adresse
+        $sql = "UPDATE adresse SET num_rue = :num_rue, nom_rue = :nom_rue, ville = :ville, code_postal = :code_postal, pays = :pays WHERE id_adresse = :id_adresse";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_adresse', $id_adresse);
+        $stmt->bindParam(':num_rue', $num_rue);
+        $stmt->bindParam(':nom_rue', $nom_rue);
+        $stmt->bindParam(':ville', $ville);
+        $stmt->bindParam(':code_postal', $code_postal);
+        $stmt->bindParam(':pays', $pays);
+        $stmt->execute();
+    }
+    
     
         public function closeConnection() {
             $this->conn = null;

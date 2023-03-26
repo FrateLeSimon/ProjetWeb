@@ -7,6 +7,7 @@ class Entreprise {
     public $ville;
     public $code_postal;
     public $logo;
+    
 
     public function __construct($id_entreprise, $nom_entreprise, $secteur_activite, $description, $ville, $code_postal, $logo) {
         $this->id_entreprise = $id_entreprise;
