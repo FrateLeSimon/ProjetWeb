@@ -31,6 +31,65 @@ class EntrepriseController {
     
         return $entreprises;
     }
+    public function addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
+        // Insérer les données dans la table entreprise
+        $sql = "INSERT INTO Entreprise (nom_entreprise, secteur_activite, logo, description) VALUES (:nom_entreprise, :secteur_activite, :logo, :description)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nom_entreprise', $nom_entreprise);
+        $stmt->bindParam(':secteur_activite', $secteur_activite);
+        $stmt->bindParam(':logo', $logo);
+        $stmt->bindParam(':description', $description);
+        $stmt->execute();
+
+        // Récupérer l'ID de l'entreprise insérée
+        $id_entreprise = $this->conn->lastInsertId();
+
+        // Insérer les données dans la table adresse
+        $sql = "INSERT INTO adresse (num_rue, nom_rue, ville, code_postal, pays) VALUES (:num_rue, :nom_rue, :ville, :code_postal, :pays)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':num_rue', $num_rue);
+        $stmt->bindParam(':nom_rue', $nom_rue);
+        $stmt->bindParam(':ville', $ville);
+        $stmt->bindParam(':code_postal', $code_postal);
+        $stmt->bindParam(':pays', $pays);
+        $stmt->execute();
+
+        // Récupérer l'ID de l'adresse insérée
+        $id_adresse = $this->conn->lastInsertId();
+
+        // Insérer les données dans la table est_localisé_à
+        $sql = "INSERT INTO est_localisé_à (id_entreprise, id_adresse) VALUES (:id_entreprise, :id_adresse)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_entreprise', $id_entreprise);
+        $stmt->bindParam(':id_adresse', $id_adresse);
+        $stmt->execute();
+    }
+    public function handleRequest() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom_entreprise = $_POST['nom_entreprise'];
+            $secteur_activite = $_POST['secteur_activite'];
+            $description = $_POST['description'];
+            $num_rue = $_POST['num_rue'];
+            $nom_rue = $_POST['nom_rue'];
+            $ville = $_POST['ville'];
+            $code_postal = $_POST['code_postal'];
+            $pays = $_POST['pays'];
+    
+            // Gérer l'upload du logo et définir le nom du fichier
+            $logo = "";
+            if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
+                $upload_dir = '../../img/entreprise/';
+                $file_name = basename($_FILES['logo']['name']);
+                $target_file = $upload_dir . $file_name;
+    
+                if (move_uploaded_file($_FILES['logo']['tmp_name'], $target_file)) {
+                    $logo = $file_name;
+                }
+            }
+    
+            $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+        }
+    }
 
     public function getTotalRecords() {
         $sql = "SELECT COUNT(*) AS total FROM Entreprise";
@@ -38,6 +97,7 @@ class EntrepriseController {
         $row = $result->fetch();
         return $row['total'];
     }
+    
         public function closeConnection() {
             $this->conn = null;
         }

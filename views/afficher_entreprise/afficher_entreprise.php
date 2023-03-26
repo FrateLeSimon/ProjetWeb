@@ -15,8 +15,45 @@
         <input type='text' name='search' placeholder='Rechercher une entreprise...'>
         <input type='submit' value='Rechercher'>
     </form>";
+    ?>
 
+
+<form action="" method="post" enctype="multipart/form-data">
+    <label for="nom_entreprise">Nom de l'entreprise :</label>
+    <input type="text" name="nom_entreprise" required>
+
+    <label for="secteur_activite">Secteur d'activité :</label>
+    <input type="text" name="secteur_activite" required>
+
+    <label for="logo">Logo :</label>
+    <input type="file" name="logo" accept="image/*" required>
+
+    <label for="description">Description :</label>
+    <textarea name="description" required></textarea>
+
+    <label for="num_rue">Numéro de rue :</label>
+    <input type="text" name="num_rue" required>
+
+    <label for="nom_rue">Nom de rue :</label>
+    <input type="text" name="nom_rue" required>
+
+    <label for="ville">Ville :</label>
+    <input type="text" name="ville" required>
+
+    <label for="code_postal">Code postal :</label>
+    <input type="text" name="code_postal" required>
+
+    <label for="pays">Pays :</label>
+    <input type="text" name="pays" required>
+
+    <input type="submit" value="Ajouter l'entreprise">
+</form>
+
+    <?php
     $entrepriseController = new EntrepriseController();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $entrepriseController->handleRequest();
+    }
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $records_per_page = 6;
@@ -36,7 +73,7 @@
         echo '<p>' . $entreprise->description  .'</p>';
         echo '<p>' . $entreprise->ville  .'</p>';
         echo '<p>' . $entreprise->code_postal  .'</p>';
-        echo '<img src="../../img/entreprise/' . $entreprise->logo . '"alt="image">';
+        echo '<img src="../../img/entreprise/' . $entreprise->logo . '" alt="image">';
         echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $entreprise->id_entreprise . '">Voir plus</a>';
         echo '</div>';
     }
