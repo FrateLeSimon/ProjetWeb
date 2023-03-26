@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title>StaJ Login</title>
+        <title>StaJ</title>
         <meta charset="utf-8">
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
@@ -18,7 +18,7 @@
     </form>";
     ?>
 
-
+<!--
 <form action="" method="post" enctype="multipart/form-data">
     <label for="nom_entreprise">Nom de l'entreprise :</label>
     <input type="text" name="nom_entreprise" required>
@@ -48,7 +48,7 @@
     <input type="text" name="pays" required>
 
     <input type="submit" value="Ajouter l'entreprise">
-</form>
+</form> -->
 
     <?php
     $entrepriseController = new EntrepriseController();

@@ -14,31 +14,31 @@ class EntrepriseController {
 
     public function getEntreprises($start_from, $records_per_page, $search_query = null) {
         if ($search_query) {
-            $sql = "SELECT entreprise.id_entreprise, nom_entreprise, secteur_activite, description, ville, code_postal, logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse WHERE nom_entreprise LIKE :search_query ORDER BY entreprise.id_entreprise ASC LIMIT $start_from, $records_per_page";
+            $sql = "SELECT entreprise.id_entreprise, nom_entreprise, secteur_activite, description_entreprise, ville, code_postal, logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse WHERE nom_entreprise LIKE :search_query ORDER BY entreprise.id_entreprise ASC LIMIT $start_from, $records_per_page";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':search_query', '%' . $search_query . '%', PDO::PARAM_STR);
         } else {
-            $sql = "SELECT entreprise.id_entreprise, nom_entreprise, secteur_activite, description, ville, code_postal, logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse ORDER BY entreprise.id_entreprise ASC LIMIT $start_from, $records_per_page";
+            $sql = "SELECT entreprise.id_entreprise, nom_entreprise, secteur_activite, description_entreprise, ville, code_postal, logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse ORDER BY entreprise.id_entreprise ASC LIMIT $start_from, $records_per_page";
             $stmt = $this->conn->prepare($sql);
         }
         $stmt->execute();
     
         $entreprises = [];
         while ($row = $stmt->fetch()) {
-            $entreprise = new Entreprise($row['id_entreprise'], $row['nom_entreprise'], $row['secteur_activite'], $row['description'], $row['ville'], $row['code_postal'], $row['logo']);
+            $entreprise = new Entreprise($row['id_entreprise'], $row['nom_entreprise'], $row['secteur_activite'], $row['description_entreprise'], $row['ville'], $row['code_postal'], $row['logo']);
             $entreprises[] = $entreprise;
         }
     
         return $entreprises;
     }
-    public function addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
+    public function addEntreprise($nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
         // Insérer les données dans la table entreprise
-        $sql = "INSERT INTO Entreprise (nom_entreprise, secteur_activite, logo, description) VALUES (:nom_entreprise, :secteur_activite, :logo, :description)";
+        $sql = "INSERT INTO Entreprise (nom_entreprise, secteur_activite, logo, description_entreprise) VALUES (:nom_entreprise, :secteur_activite, :logo, :description_entreprise)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':nom_entreprise', $nom_entreprise);
         $stmt->bindParam(':secteur_activite', $secteur_activite);
         $stmt->bindParam(':logo', $logo);
-        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':description_entreprise', $description_entreprise);
         $stmt->execute();
 
         // Récupérer l'ID de l'entreprise insérée
@@ -71,7 +71,7 @@ class EntrepriseController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nom_entreprise = $_POST['nom_entreprise'];
             $secteur_activite = $_POST['secteur_activite'];
-            $description = $_POST['description'];
+            $description_entreprise = $_POST['description_entreprise'];
             $num_rue = $_POST['num_rue'];
             $nom_rue = $_POST['nom_rue'];
             $ville = $_POST['ville'];
@@ -93,24 +93,24 @@ class EntrepriseController {
             // Vérifier si c'est une mise à jour ou un ajout
             if (isset($_POST['update']) && $_POST['update'] == '1' && isset($_POST['id_entreprise'])) {
                 $id_entreprise = $_POST['id_entreprise'];
-                $this->updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+                $this->updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays);
                 // Rediriger vers la même page pour actualiser
                 header("Location: modifier_entreprise.php?id=" . $entreprise_id);
             } else {
-                $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
+                $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays);
             }
         }
     }
     
     public function getEntrepriseById($id_entreprise) {
-        $sql = "SELECT nom_entreprise, secteur_activite, description, ville, code_postal,logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse WHERE entreprise.id_entreprise = :id";
+        $sql = "SELECT nom_entreprise, secteur_activite, description_entreprise, ville, code_postal,logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse WHERE entreprise.id_entreprise = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id_entreprise, PDO::PARAM_INT);
         $stmt->execute();
         $row = $stmt->fetch();
 
         if ($row) {
-            $entreprise = new Entreprise($id_entreprise, $row['nom_entreprise'], $row['secteur_activite'], $row['description'], $row['ville'], $row['code_postal'], $row['logo']);
+            $entreprise = new Entreprise($id_entreprise, $row['nom_entreprise'], $row['secteur_activite'], $row['description_entreprise'], $row['ville'], $row['code_postal'], $row['logo']);
             return $entreprise;
         }
 
@@ -123,15 +123,15 @@ class EntrepriseController {
         $row = $result->fetch();
         return $row['total'];
     }
-    public function updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
+    public function updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
         // Mettre à jour les données dans la table entreprise
-        $sql = "UPDATE Entreprise SET nom_entreprise = :nom_entreprise, secteur_activite = :secteur_activite, logo = :logo, description = :description WHERE id_entreprise = :id_entreprise";
+        $sql = "UPDATE Entreprise SET nom_entreprise = :nom_entreprise, secteur_activite = :secteur_activite, logo = :logo, description_entreprise = :description_entreprise WHERE id_entreprise = :id_entreprise";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id_entreprise', $id_entreprise);
         $stmt->bindParam(':nom_entreprise', $nom_entreprise);
         $stmt->bindParam(':secteur_activite', $secteur_activite);
         $stmt->bindParam(':logo', $logo);
-        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':description_entreprise', $description_entreprise);
         $stmt->execute();
     
         // Récupérer l'ID de l'adresse associée à l'entreprise
