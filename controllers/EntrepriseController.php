@@ -90,6 +90,21 @@ class EntrepriseController {
             $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description, $num_rue, $nom_rue, $ville, $code_postal, $pays);
         }
     }
+    
+    public function getEntrepriseById($id_entreprise) {
+        $sql = "SELECT nom_entreprise, secteur_activite, description, ville, code_postal,logo FROM Entreprise LEFT JOIN est_localisé_à ON entreprise.id_entreprise = est_localisé_à.id_entreprise LEFT JOIN adresse ON est_localisé_à.id_adresse = adresse.id_adresse WHERE entreprise.id_entreprise = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id_entreprise, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch();
+
+        if ($row) {
+            $entreprise = new Entreprise($id_entreprise, $row['nom_entreprise'], $row['secteur_activite'], $row['description'], $row['ville'], $row['code_postal'], $row['logo']);
+            return $entreprise;
+        }
+
+        return null;
+    }
 
     public function getTotalRecords() {
         $sql = "SELECT COUNT(*) AS total FROM Entreprise";
