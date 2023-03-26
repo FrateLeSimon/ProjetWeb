@@ -18,37 +18,9 @@
     </form>";
     ?>
 
-<!--
-<form action="" method="post" enctype="multipart/form-data">
-    <label for="nom_entreprise">Nom de l'entreprise :</label>
-    <input type="text" name="nom_entreprise" required>
-
-    <label for="secteur_activite">Secteur d'activité :</label>
-    <input type="text" name="secteur_activite" required>
-
-    <label for="logo">Logo :</label>
-    <input type="file" name="logo" accept="image/*" required>
-
-    <label for="description">Description :</label>
-    <textarea name="description" required></textarea>
-
-    <label for="num_rue">Numéro de rue :</label>
-    <input type="text" name="num_rue" required>
-
-    <label for="nom_rue">Nom de rue :</label>
-    <input type="text" name="nom_rue" required>
-
-    <label for="ville">Ville :</label>
-    <input type="text" name="ville" required>
-
-    <label for="code_postal">Code postal :</label>
-    <input type="text" name="code_postal" required>
-
-    <label for="pays">Pays :</label>
-    <input type="text" name="pays" required>
-
-    <input type="submit" value="Ajouter l'entreprise">
-</form> -->
+    <div class ="add">
+    <a href="../ajouter_entreprise/ajouter_entreprise.php" class="add-button">Ajouter une entreprise</a>
+    </div>
 
     <?php
     $entrepriseController = new EntrepriseController();
@@ -68,18 +40,24 @@
     }
 
     foreach ($entreprises as $entreprise) {
-        echo '<div class="box">';
-        echo '<h3>' . $entreprise->nom_entreprise . '</h3>';
-        echo '<p>' . $entreprise->secteur_activite . '</p>';
-        echo '<p>' . $entreprise->description  .'</p>';
-        echo '<p>' . $entreprise->ville  .'</p>';
-        echo '<p>' . $entreprise->code_postal  .'</p>';
-        echo '<img src="../../img/entreprise/' . $entreprise->logo . '" alt="image">';
-        echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $entreprise->id_entreprise . '">Voir plus</a>';
-   
-        echo '<a href="../modifier_entreprise/modifier_entreprise.php?id=' . $entreprise->id_entreprise . '">Modifier</a>';
-        echo '</div>';
-        echo '</div>';
+            echo '<section class="sect"> <div class="container">';
+            echo '<div class="text"><h1>' . $entreprise->nom_entreprise . '</h1>';
+            echo '<p>' . $entreprise->description  .'</p>';
+
+            echo '<div class="location">';
+            echo '<p id="icon"><i class="fa-solid fa-location-dot"></i><p>    ';
+            echo '<p>' . $entreprise->ville  .'</p>';
+            echo '<p>' . $entreprise->code_postal  .'</p>';
+            echo '</div>';
+
+            echo '<div class="buttons">';
+            echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $entreprise->id_entreprise . '">Voir plus</a>';
+            echo '<a href="../modifier_entreprise/modifier_entreprise.php?id=' . $entreprise->id_entreprise . '">Modifier</a>';
+            echo '</div>';
+        
+            echo '<img src="../../img/entreprise/' . $entreprise->logo . '" alt="image">';
+            echo '</div>';
+            echo '</div> </div></section>';
     }
 
     $total_records = $entrepriseController->getTotalRecords();
