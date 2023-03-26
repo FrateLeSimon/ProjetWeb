@@ -27,9 +27,10 @@
 
     echo '<section class="sect"> <div class="container">';
     echo '<div class="text"><h1>' . $entreprise->nom_entreprise . '</h1>';
-    echo '<p><b>Secteur d\'activié :</b>  ' . $entreprise->secteur_activite  .'</p>';
-    echo '<p>' . $entreprise->description  .'</p>';
+    echo '<p><b>Secteur d\'activié : </b>  ' . $entreprise->secteur_activite  .'</p>';
+    echo '<p><b>Description : </b><br>' . $entreprise->description  .'</p>';
 
+    echo '<p><b>Adresse : </b></p>';
     echo '<div class="location">';
     echo '<p id="icon"><i class="fa-solid fa-location-dot"></i><p>    ';
     echo '<p>' . $entreprise->ville  .'</p>';
