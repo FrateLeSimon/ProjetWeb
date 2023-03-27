@@ -52,7 +52,7 @@ body {
     outline: none;
     box-shadow: 0 0 0 3px #D48042;
   }
-  
+
   .container form input[type="file"] {
     margin-bottom: 1rem;
   }
@@ -90,6 +90,15 @@ body {
     margin : 0 auto;
   }
   
+#suppr{
+    background-color: #cf1818;
+    color: #fff;
+}
+
+#suppr:hover {
+    background-color: #a80e0e;
+    color: #ffffff;
+}
   .container form a:hover {
     background-color: #aa622e;
     color: #ffffff;

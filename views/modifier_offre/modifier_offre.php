@@ -40,13 +40,25 @@
             <input type="hidden" name="update" value="1">
             <input type="hidden" name="id_offre" value="<?php echo $offre->id_offre; ?>">
             <input type="hidden" name="delete" value="<?php echo $offre->id_offre; ?>">
+            
             <input type="submit" value="Modifier l'offre">
+            <a id="suppr" type="button" id="supprimerOffre" onclick="supprimerOffre()">Supprimer l'offre</a>
             <a id="return" href="../afficher_offre/afficher_offre.php">Retour</a>
-            <form action="supprimer_offre.php" method="post">
-        <input type="hidden" name="id_offre" value="<?php echo $offre->id_offre; ?>">
-        <input type="submit" value="Supprimer l'offre">
-    </form>
-        </form>
+            
+            </form>
+            
+    </section>
+
+    <script>
+        function supprimerOffre() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer cette offre ?")) {
+                window.location.href = "../afficher_offre/afficher_offre.php?delete=" + <?php echo $offre->id_offre; ?>;
+            }
+        }
+    </script>
+
+
+</form>
     </section>
     <?php
    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
@@ -62,13 +74,7 @@
     header("Location: ../afficher_offre/afficher_offre.php");
     exit;
 }
-//methode qui permet de supprimer une offre
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $id_offre = $_POST['id_offre'];
-    $offreController->deleteOffre($id_offre);
-    header("Location: ../afficher_offre/afficher_offre.php");
-    exit;
-}
+
     $offreController->closeConnection();
     ?>
 

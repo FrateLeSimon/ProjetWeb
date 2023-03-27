@@ -1,4 +1,3 @@
-// Inclure la connexion à la base de données et le modèle UserModel ici
 <?php 
 require_once 'db_connect.php';
 require_once 'UserModel.php';

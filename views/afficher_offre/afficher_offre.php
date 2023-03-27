@@ -19,7 +19,11 @@
     </form>";
     
     $offreController = new OffreController();
-
+    if (isset($_GET['delete'])) {
+        $offreController->deleteOffre($_GET['delete']);
+        header("Location: ../afficher_offre/afficher_offre.php");
+        exit;
+    }
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
     // Déterminez le nombre de résultats à récupérer par page
@@ -55,11 +59,10 @@
         echo '<div class="buttons">';
         echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre->id_offre . '">Voir plus</a>';
         echo '<a href="../modifier_offre/modifier_offre.php?id=' . $offre->id_offre . '">Modifier</a>';
-        // Wishlist
-        echo '<form action="../ajouter_wishlist/WishListController.php?action=addWish" method="POST">';
-        echo '<input type="hidden" name="id_offre" value="' . $offre->id_offre . '">';
-        echo '<input type="submit" value="Ajouter à la wishlist" class="wishlist-button">';
-        echo '</form>';
+// Ajout du bouton pour la wishlist
+echo '<a href="afficher_offre.php?add_to_wishlist=' . $offre->id_offre . '">Ajouter à la wishlist</a>';
+
+
         echo '</div>';
         echo '</div>';
             echo '<img src="../../img/entreprise/' . $offre->logo . '" alt="image">';
@@ -84,3 +87,5 @@
     ?>
 </body>
 </html>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>

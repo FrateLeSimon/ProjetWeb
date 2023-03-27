@@ -7,6 +7,7 @@ class Humain {
     public $id_etudiant;
     public $id_pilote;
 
+
     public function __construct($id_humain, $nom, $prenom, $admin, $id_etudiant, $id_pilote) {
         $this->id_humain = $id_humain;
         $this->nom = $nom;
@@ -16,4 +17,5 @@ class Humain {
         $this->id_pilote = $id_pilote;
     }
 }
-?>
+
+

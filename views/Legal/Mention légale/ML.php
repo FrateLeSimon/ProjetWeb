@@ -1,12 +1,11 @@
 <?php require_once '../../navfooter/navbar/navbar.php'; ?>
 
-
 <!DOCTYPE html>
-<html lang="fr">
+<html>
     <head>
         <meta charset="utf-8">
-        <title>Conditions générales d'utilisation</title>
-        <link rel="stylesheet" href="http://localhost:3000/projetWeb/views/Legal/CGU/style.css">
+        <title>Mentions légales</title>
+        <link rel="stylesheet" href="http://localhost:3000/projetWeb/views/Legal/Mention lég/style.css">
     </head>
     <body>
       <div class='texte'>

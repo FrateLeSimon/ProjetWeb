@@ -29,18 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $auth_model->getUserByEmailAndPassword($email, $password);
 
         if ($user) {
-            // Les informations de l'utilisateur sont correctes, vous pouvez les rediriger vers une autre page (par exemple, la page d'accueil)
-            session_start();
-            $_SESSION['user'] = $user;
+            // Générer un jeton de sécurité pour l'utilisateur et le stocker dans la base de données
+            $user_token = $auth_model->generateUserToken($user["id_humain"]);
 
-            if (ord($user["admin"]) === 1) {
-                // Si l'utilisateur est un administrateur, redirigez-le vers la page admin
-                header("Location: ../admin_page/admin_page.php");
-            } else {
-                // Sinon, redirigez l'utilisateur vers la page d'accueil normale
-                header("Location: ../afficher_entreprise/afficher_entreprise.php");
-            }
+            // Stocker l'identifiant de l'utilisateur et le jeton de sécurité dans des cookies
+            setcookie('user_id', $user["id_humain"], time() + (86400 * 30), "/"); // valide pendant 30 jours
+            setcookie('user_token', $user_token, time() + (86400 * 30), "/"); // valide pendant 30 jours
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            header("Location: http://localhost:3000/projetWeb/views/afficher_offre/afficher_offre.php");
             exit;
+
         } else {
             $error_message = "E-mail ou mot de passe incorrect.";
         }

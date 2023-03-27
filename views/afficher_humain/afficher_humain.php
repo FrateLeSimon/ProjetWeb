@@ -28,10 +28,10 @@
             echo '<div class="box">';
             echo '<h3>' . $humain->prenom . ' ' . $humain->nom . '</h3>';
             if ($humain->id_etudiant) {
-                echo '<p>Type: Étudiant</p>';
+                echo '<p><b>Étudiant</b></p>';
                 echo '<p>ID Étudiant: ' . $humain->id_etudiant . '</p>';
             } elseif ($humain->id_pilote) {
-                echo '<p>Type: Pilote</p>';
+                echo '<p><b>Pilote</b></p>';
                 echo '<p>ID Pilote: ' . $humain->id_pilote . '</p>';
             } else {
                 echo '<p>Type: Admin</p>';

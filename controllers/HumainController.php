@@ -1,5 +1,6 @@
 <?php
-require_once '../../models/HumainModel.php';
+require_once 'veriflogin.php';
+require '../../models/HumainModel.php';
 
 class HumainController {
     private $db_host = 'localhost';
@@ -12,12 +13,13 @@ class HumainController {
         $this->conn = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_pass);
     }
 
+
     public function getAllHumains() {
-        $sql = "SELECT H.id_humain, H.nom, H.prenom, H.admin, E.id_etudiant, P.id_pilote
-                FROM Humain H
-                LEFT JOIN Etudiant E ON H.id_humain = E.id_humain
-                LEFT JOIN Pilote P ON H.id_humain = P.id_humain
-                Where H.admin = 0x00";
+        $sql = "SELECT humain.id_humain, nom, prenom, admin, id_etudiant, id_pilote FROM Humain
+        LEFT JOIN Etudiant ON humain.id_humain = etudiant.id_humain
+        LEFT JOIN pilote ON humain.id_humain = pilote.id_humain
+        Where humain.admin = 0x00";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
@@ -29,7 +31,7 @@ class HumainController {
                 $row['prenom'],
                 $row['admin'],
                 $row['id_etudiant'],
-                $row['id_pilote']
+                $row['id_pilote'],
             );
             $humains[] = $humain;
         }
@@ -37,12 +39,12 @@ class HumainController {
         return $humains;
     }
 
+
     public function searchHumains($search) {
-        $sql = "SELECT H.id_humain, H.nom, H.prenom, H.admin, E.id_etudiant, P.id_pilote
-                FROM Humain H
-                LEFT JOIN Etudiant E ON H.id_humain = E.id_humain
-                LEFT JOIN Pilote P ON H.id_humain = P.id_humain
-                WHERE H.admin = 0x00 AND (H.nom LIKE :search OR H.prenom LIKE :search)";
+        $sql = "SELECT humain.id_humain, nom, prenom, admin, id_etudiant, id_pilote FROM Humain
+        LEFT JOIN Etudiant ON humain.id_humain = etudiant.id_humain
+        LEFT JOIN pilote ON humain.id_humain = pilote.id_humain
+        Where humain.admin = 0x00 AND (humain.nom LIKE :search OR humain.prenom LIKE :search);";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => '%' . $search . '%']);
     

@@ -50,9 +50,19 @@
             <input type="hidden" name="id_entreprise" value="<?php echo $entreprise->id_entreprise; ?>">
 
             <input type="submit" value="Modifier l'entreprise">
+            <a id="suppr" type="button" id="supprimerEntreprise" onclick="supprimerEntreprise()">Supprimer l'entreprise</a>
             <a id="return" href="../afficher_entreprise/afficher_entreprise.php">Retour</a>
         </form>
+        
     </section>
+    <script>
+    function supprimerEntreprise() {
+        if (confirm("Êtes-vous sûr de vouloir supprimer cette entreprise ?")) {
+            window.location.href = "../afficher_entreprise/afficher_entreprise.php?delete=" + <?php echo $entreprise->id_entreprise; ?>;
+        }
+    }
+</script>
+
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $entrepriseController->handleRequest($entreprise_id);

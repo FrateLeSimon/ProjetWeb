@@ -1,4 +1,5 @@
 <?php
+require_once 'veriflogin.php';
 require_once '../../models/Entreprise.php';
 
 class EntrepriseController {
@@ -98,7 +99,11 @@ class EntrepriseController {
                 $this->updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays);
                 // Rediriger vers la même page pour actualiser
                 header("Location: http://localhost:3000/projetWeb/views/afficher_entreprise/afficher_entreprise.php");
-            } else {
+            } 
+         elseif (isset($_POST['delete'])) {
+            $this->deleteEntreprise($entreprise_id);
+        }
+            else {
                 $this->addEntreprise($nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays);
             }
         }
@@ -177,6 +182,18 @@ class EntrepriseController {
             echo "Erreur lors de la mise à jour : " . $e->getMessage();
         }
     }
+
+    public function deleteEntreprise($id_entreprise) {
+
+        $sql = "DELETE FROM est_localisé_à WHERE id_entreprise = :id_entreprise";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':id_entreprise' => $id_entreprise]);
+
+        $sql = "DELETE FROM entreprise WHERE id_entreprise = :id_entreprise";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':id_entreprise' => $id_entreprise]);
+    }
+
     
     
         public function closeConnection() {

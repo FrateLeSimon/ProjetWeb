@@ -1,4 +1,5 @@
 <?php
+require_once 'veriflogin.php';
 require_once '../../models/OffreModel.php';
 
 class OffreController {
@@ -10,6 +11,14 @@ class OffreController {
 
     public function __construct() {
         $this->conn = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_pass);
+    }
+
+    public function ajouterALaWishlist($id_offre, $id_etudiant) {
+        $sql = "INSERT INTO wishlist (id_offre, id_etudiant) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('ii', $id_offre, $id_etudiant);
+        $stmt->execute();
+        $stmt->close();
     }
 
     public function getOffres($start_from, $records_per_page, $search_query = '') {
@@ -89,12 +98,62 @@ class OffreController {
         return header("Location: http://localhost:3000/projetWeb/views/afficher_offre/afficher_offre.php");
     }
     public function deleteOffre($id_offre) {
-        $sql = "DELETE FROM offre WHERE id_offre = :id_offre";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id_offre', $id_offre, PDO::PARAM_INT);
-        $stmt->execute();
-        return header("Location: http://localhost:3000/projetWeb/views/afficher_offre/afficher_offre.php");
+        // Supprimez les enregistrements liés dans la table a_besoin_de
+        $sql_delete_abesoinde = "DELETE FROM a_besoin_de WHERE id_offre = :id_offre";
+        $stmt_delete_abesoinde = $this->conn->prepare($sql_delete_abesoinde);
+        $stmt_delete_abesoinde->bindParam(':id_offre', $id_offre, PDO::PARAM_INT);
+        $stmt_delete_abesoinde->execute();
+    
+        // Supprimez les enregistrements liés dans la table concerne
+        $sql_delete_concerne = "DELETE FROM concerne WHERE id_offre = :id_offre";
+        $stmt_delete_concerne = $this->conn->prepare($sql_delete_concerne);
+        $stmt_delete_concerne->bindParam(':id_offre', $id_offre, PDO::PARAM_INT);
+        $stmt_delete_concerne->execute();
+    
+        // Supprimez les enregistrements liés dans la table wishlist
+        $sql_delete_wishlist = "DELETE FROM wishlist WHERE id_offre = :id_offre";
+        $stmt_delete_wishlist = $this->conn->prepare($sql_delete_wishlist);
+        $stmt_delete_wishlist->bindParam(':id_offre', $id_offre, PDO::PARAM_INT);
+        $stmt_delete_wishlist->execute();
+    
+        // Supprimez l'offre de la table offre
+        $sql_delete_offre = "DELETE FROM offre WHERE id_offre = :id_offre";
+        $stmt_delete_offre = $this->conn->prepare($sql_delete_offre);
+        $stmt_delete_offre->bindParam(':id_offre', $id_offre, PDO::PARAM_INT);
+        $stmt_delete_offre->execute();
     }
+    public function getOffresByEntrepriseId($id_entreprise)
+{
+    $stmt = $this->conn->prepare("SELECT offre.*, entreprise.nom_entreprise, entreprise.logo
+    FROM offre
+    JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
+    WHERE offre.id_entreprise = :id_entreprise");
+$stmt->bindParam(':id_entreprise', $id_entreprise, PDO::PARAM_INT);
+$stmt->execute();
+    $offresData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $offres = [];
+    foreach ($offresData as $offreData) {
+        $offre = new Offre(
+            $offreData['id_offre'],
+            $offreData['titre_offre'],
+            $offreData['desc_offre'],
+            $offreData['date_offre'],
+            $offreData['duree'],
+            $offreData['remuneration'],
+            $offreData['nbr_places'],
+            $offreData['id_entreprise'],
+            $offreData['nom_entreprise'],
+            $offreData['logo']
+
+        );
+        array_push($offres, $offre);
+    }
+
+    return $offres;
+}
+
+
     public function closeConnection() {
         $this->conn = null;
     }

@@ -1,3 +1,10 @@
+<?php
+if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_token'])) {
+    header("Location: http://localhost:3000/projetWeb/views/afficher_offre/afficher_offre.php");
+} 
+
+?>
+
 <?php require_once '../../controllers/loginController.php'; ?>
 <html>
     <head>

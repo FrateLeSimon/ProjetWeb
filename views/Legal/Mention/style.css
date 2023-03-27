@@ -1,0 +1,62 @@
+/* Définition des styles pour la page Conditions Générales d'Utilisation */
+
+/* appliquer un fond différent au corps de la page */
+body {
+  font-family: sans-serif;
+  background-image: url("http://localhost:3000/projetWeb/img/vitrine/fond.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* appliquer un fond bleu clair au conteneur de texte */
+ .texte{
+  background-color: #ffffff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  margin: 5em;
+}
+
+
+/* Styles pour les titres */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-left: 2em;
+}
+
+h3 {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+/* Styles pour les paragraphes */
+p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  margin-right: 3em;
+  margin-left: 2em;
+}
+
+/* Styles pour les listes */
+.list {
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+  /* code de couleur pour le bleu clair */
+
+}
+
+li {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+

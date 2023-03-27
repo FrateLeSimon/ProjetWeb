@@ -19,5 +19,16 @@ class UserModel
 
         return $result->num_rows > 0;
     }
+
+    public function createUser($email, $password)
+    {
+        $sql = "INSERT INTO Authentification (login, mdp) VALUES (?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $this->db->insert_id;
+    }
 }
 ?>

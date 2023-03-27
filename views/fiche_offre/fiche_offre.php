@@ -24,6 +24,8 @@ if (!$offre) {
     header('Location: afficher_offres.php');
     exit;
 }
+        echo'<div class="titre"><h1>Fiche Offre</h1></div>';
+
         echo '<section class="sect"> <div class="container">';
         echo '<div class="text"><h1>' . $offre->titre_offre . '</h1>';
         echo '<p><b>Entreprise :</b> ' . $offre->nom_entreprise  .'</p>';
@@ -34,7 +36,7 @@ if (!$offre) {
         echo '<p><b>Description :</b><br> ' . $offre->desc_offre  .'</p>';
         echo '</div>';
         echo '<div class="buttons">';
-        echo '<a href="../afficher_offre/afficher_offre.php" class="btn-back">Retour</a>';
+        echo '<button onclick="javascript:history.back()">Retour</button>';
         echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $offre->id_entreprise . '" id="ent">Fiche entreprise</a>';
         echo '</div>';
         echo '<img src="../../img/entreprise/' . $offre->logo . '" alt="image">';

@@ -84,6 +84,16 @@ body {
     margin : 0 auto;
   }
   
+ #suppr{
+    background-color: #cf1818;
+    color: #fff;
+}
+
+#suppr:hover {
+    background-color: #a80e0e;
+    color: #ffffff;
+}
+
   .container form a:hover {
     background-color: #aa622e;
     color: #ffffff;

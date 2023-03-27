@@ -28,7 +28,7 @@ if ($humain->id_etudiant) {
     echo '<p>Type: Admin</p>';
 }
 
-echo '<a href="../afficher_humain/afficher_humain.php" class="btn-back">Retour</a>';
+echo '<button onclick="javascript:history.back()">Retour</button>';
 echo '</div>';
 
 $humainController->closeConnection();

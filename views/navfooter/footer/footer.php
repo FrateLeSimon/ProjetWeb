@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="http://localhost:3000/projetWeb/assets/vendors/fontawesome/css/all.min.css">
     </head>
     <body>
+
       <footer>
     <div class="footer-container">
           <div class="col1">
@@ -16,9 +17,9 @@
           <div class="col2">
             <h3>Liens utiles</h3>
             <ul>
-              <li><a href="#">Mentions légales</a></li>
+              <li><a href="http://localhost:3000/projetWeb/views/Legal/Mention/ML.php">Mentions légales</a></li>
               <li><a href="#" id="btn_popup2">À propos</a></li>
-              <li><a href="#" id="Condition">Condition générale d'utilisation</a></li>
+              <li><a href="http://localhost:3000/projetWeb/views/Legal/CGU/CGU.php" id="Condition">Condition générale d'utilisation (CGU)</a></li>
             </ul>
           </div>
           <div id="contact" class="col3">

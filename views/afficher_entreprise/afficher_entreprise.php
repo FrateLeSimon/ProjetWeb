@@ -38,6 +38,11 @@
     } else {
         $entreprises = $entrepriseController->getEntreprises($start_from, $records_per_page);
     }
+    if (isset($_GET['delete'])) {
+        $entrepriseController->deleteEntreprise((int)$_GET['delete']);
+        header('Location: afficher_entreprise.php');
+        exit;
+    }
     
     foreach ($entreprises as $entreprise) {
             echo '<section class="sect"> <div class="container">';
@@ -77,3 +82,5 @@
     ?>
 </body>
 </html>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>
