@@ -1,78 +1,85 @@
 /* définition des couleurs */
 :root {
-    --primary-color: #D48042;
-    --secondary-color: #ffffff;
-    --background-color: #f5f5f5;
+  --primary-color: #D48042;
+  --secondary-color: #ffffff;
+  --background-color: #f5f5f5;
+}
+
+
+/* définition du style pour la nav */
+nav.navbar {
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  backdrop-filter: blur(10px) brightness(0.7);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* définition du style pour le logo */
+nav.navbar .logo img {
+  height: 40px;
+}
+
+/* définition du style pour la zone de gauche de la nav */
+nav.navbar .leftNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: 40px;
+}
+
+a.button {
+  display: inline-block;
+  background-color: #D48042;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: auto;
+  margin-left: 20px;
+}
+
+a.button:hover {
+  background-color: #aa622e;
+  transform: scale(1.03);
+}
+
+nav.navbar .leftNav button a {
+  text-decoration: none;
+}
+
+/* définition du style pour la liste de droite de la nav */
+nav.navbar .nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* définition du style pour chaque élément de la liste */
+nav.navbar .nav-list li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+.nav-list li a i {
+  font-size: 1.5em;
+  color: #fff;
   }
-  
-  /* reset des marges et des paddings */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* définition du style pour la nav */
-  nav.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    padding: 0 20px;
-    background-color: var(--primary-color);
-  }
-  
-  /* définition du style pour le logo */
-  nav.navbar .logo img {
-    height: 40px;
-  }
-  
-  /* définition du style pour la zone de gauche de la nav */
-  nav.navbar .leftNav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: auto
-  }
-  
-  /* définition du style pour le champ de recherche */
-  nav.navbar input[type="text"] {
-    width: 200px;
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-left: 30px;
-  }
-  
-  /* définition du style pour le bouton de recherche */
-  nav.navbar .btn {
-    margin-left: 10px;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    border: none;
-    border-radius: 15px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  /* définition du style pour la liste de droite de la nav */
-  nav.navbar .nav-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* définition du style pour chaque élément de la liste */
-  nav.navbar .nav-list li {
-    list-style: none;
-    margin-left: 20px;
-  }
-  
-  /* définition du style pour chaque icône de la liste */
-  nav.navbar .nav-list li img {
-    height: 25px;
-    color: var(--secondary-color);
-  }
+
+.nav-list li a i:hover{
+  transform: scale(1.03);
+}
+
+/* définition du style pour chaque icône de la liste */
+nav.navbar .nav-list li img {
+  height: 25px;
+  color: var(--secondary-color);
+}

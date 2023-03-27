@@ -47,5 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error_message = "Veuillez remplir les champs E-mail et Mot de passe.";
     }
+
 }
 ?>

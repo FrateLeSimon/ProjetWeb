@@ -1,5 +1,7 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
 
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
+
 <html>
     <head>
         <title>StaJ Offres</title>
@@ -21,7 +23,7 @@
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
     // Déterminez le nombre de résultats à récupérer par page
-    $records_per_page = 2;
+    $records_per_page = 3;
 
     // Calculez l'index de début pour la récupération des résultats
     $start_from = ($page-1) * $records_per_page;
@@ -33,26 +35,49 @@
     } else {
         $offres = $offreController->getOffres($start_from, $records_per_page);
     }
+    ?>
 
+    <div class ="add">
+    <a href="../ajouter_offre/ajouter_offre.php" class="add-button">Ajouter une offre</a>
+    </div>
+
+    <?php
     // Parcourez les offres et affichez-les dans des éléments HTML
     foreach ($offres as $offre) {
-        echo '<div class="box">';
-        echo '<h3>Offre ID: ' . $offre->id_offre . '</h3>';
-        echo '<p>Durée: ' . $offre->duree . '</p>';
-        echo '<p>Rémunération: ' . $offre->remuneration . '</p>';
-        echo '<p>Date: ' . $offre->date_offre  .'</p>';
-        echo '<p>Nombre de places: ' . $offre->nbr_places  .'</p>';
-        echo '<p>ID Entreprise: ' . $offre->id_entreprise  .'</p>';
+        echo '<section class="sect"> <div class="container">';
+        echo '<div class="text"><h1>' . $offre->titre_offre . '</h1>';
+        echo '<p><b>Entreprise :</b> ' . $offre->nom_entreprise  .'</p>';
+        echo '<p><b>Date :</b> ' . $offre->date_offre  .'</p>';
+        echo '<p><b>Durée :</b> ' . $offre->duree . ' semaines </p>';
+        echo '<p><b>Rémunération :</b> ' . $offre->remuneration . ' €</p>';
+        echo '<p><b>Nombre de places :</b> ' . $offre->nbr_places  .'</p>';
+        echo '<p><b>Description :</b><br> ' . $offre->desc_offre  .'</p>';
+        echo '<div class="buttons">';
         echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre->id_offre . '">Voir plus</a>';
+        echo '<a href="../modifier_offre/modifier_offre.php?id=' . $offre->id_offre . '">Modifier</a>';
+        // Wishlist
+        echo '<form action="../ajouter_wishlist/WishListController.php?action=addWish" method="POST">';
+        echo '<input type="hidden" name="id_offre" value="' . $offre->id_offre . '">';
+        echo '<input type="submit" value="Ajouter à la wishlist" class="wishlist-button">';
+        echo '</form>';
         echo '</div>';
+        echo '</div>';
+            echo '<img src="../../img/entreprise/' . $offre->logo . '" alt="image">';
+        echo '</div>';
+        echo '</div> </div></section>';
     }
-
     // Affichez les liens de pagination
     $total_records = $offreController->getTotalRecords();
     $total_pages = ceil($total_records / $records_per_page);
+
+    echo'<div class="pagination">';
+
     for ($i = 1; $i <= $total_pages; $i++) {
-        echo "<a href='afficher_offre.php?page=$i'>$i</a> ";
+        $class = ($i == $page) ? "current-page" : "";
+        echo "<a class='$class' href='afficher_offre.php?page=$i'>$i</a> ";
     }
+  
+    echo'</div>';
 
     // Fermez la connexion
     $offreController->closeConnection();

@@ -76,7 +76,9 @@ body {
     background-color: #fff;
   }
   
-  .container form select:focus {
+  .container form select:focus,
+  .container form input[type="text"]:focus,
+  .container form textarea:focus {
     outline: none;
     box-shadow: 0 0 0 3px #D48042;
   }

@@ -1,51 +1,203 @@
 body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    background-color: #0f1620;
-    background-image: url("../../img/vitrine/fond.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  background-color: #0f1620;
+  background-image: url("../../img/vitrine/fond.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.sect .container {
+  position: relative;
+  width: 90%;
+  height: 450px;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: 40 auto; 
+  background-color: #ffffff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sect .container img {
+  position: absolute;
+  aspect-ratio: 1/1;
+  width: 30%;
+  height: 300px;
+  object-fit: cover;
+  left: 15px;
+  right: 15;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 15px;
+  border: 3px solid #000000;
+}
+
+.sect .container h1 {
+  margin-top: 5%;
+  margin-right: 3%;
+  font-size: 2em;
+  color: #000000; 
+  margin-bottom: 2%;
+}
+
+.sect .container .text {
+  margin-left: 35%;
+}
+.sect .container p {
+  margin-right: 3%;
+  font-size: 1rem;
+  color: #000000;
+  
+  
+ 
+}
+
+.sect .container .buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 25 auto;
+}
+
+.sect .container .buttons a {
+  font-size: 1.2rem;
+  background-color: #4285f4;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sect .container .buttons a:hover {
+  background-color: #2d5faf;
+  color: #ffffff;
+}
+
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+  margin-top: 50px;
+  }
+  
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 300px;
+  font-size: 16px;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  margin-right: 20px;
   }
 
-  .box {
+input[type="submit"] {
+  padding: 10px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+  
+input[type="submit"]:hover {
+  background-color: #2d5faf;
+  transform: scale(1.05);
+}
+
+.add{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.add-button{
+  text-decoration: none;
+  background-color: #D48042;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin-top: 30px;
+}
+
+.add-button:hover{
+  background-color: #aa622e;
+  transform: scale(1.03);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #D48042;
+}
+
+.pagination a:hover {
+  background-color: #aa622e;
+}
+
+.pagination .current-page {
+  border-radius: 100%;
+  background-color: #4285f4;
+}
+
+.pagination .current-page:hover {
+  background-color: #2d5faf;
+}
+
+@media screen and (max-width: 768px) {
+  .sect .container {
     width: 100%;
-    max-width: 700px;
-    height: 250px;
-    margin: 40 auto;
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
+    height: 400px;
+  }
+
+  .sect .container    p{
+    font-size: 0.8rem;
+  }
+  .sect .container h1{
+    font-size: 1.5rem;
+  }
+  .sect .container img{
+      width: 45%;
+      height: 250px;
+  }
+  .sect .container .text {
+      margin-left: 51%;
+  }
+  .sect .container .buttons a {
+      font-size: 0.8rem;
+      padding: 0.6rem 1.2rem;
     }
-    
-    .box h3 {
-    font-size: 24px;
-    margin-top: 0;
-    }
-    
-    .box p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    }
-    
-    .box a {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    }
-    
-    .box a:hover {
-    background-color: #0062cc;
-    }
-    
-    @media (max-width: 768px) {
-    .box {
-    max-width: 100%;
-    }
-    }
+}
+

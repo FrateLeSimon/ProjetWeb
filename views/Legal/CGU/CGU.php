@@ -1,26 +1,12 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Trouve ton StaJ !</title>
-        <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
+        <title>CGU</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
     </head>
     <body>
-      <header>
-        <div class="navbar">
-            <div class="logo"><a href="page_vitrine.php"><img src="../../img/logo/gros_logo.svg" ></a></div>
-            <ul class="links">
-                <li><a href="#contact" id="btn_contact1" a>Nous contacter</a></li>
-                <li><a href="#" id="btn_popup1" a>À propos</a></li>
-                <li><a href="../login/login.php" a>Se connecter</a></li>
-                <li><a href="../signup/signup.php" class="action_btn" a>S'inscrire</a></li>
-            </ul>
-        </div>
-      </header>
 
       <div class="overlay"></div>
       <section class="popup">

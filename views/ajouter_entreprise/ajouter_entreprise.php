@@ -29,8 +29,8 @@
             <label for="logo">Logo :</label>
             <input type="file" name="logo" accept="image/*" required>
 
-            <label for="description">Description :</label>
-            <textarea name="description" required></textarea>
+            <label for="description_entreprise">Description :</label>
+            <textarea name="description_entreprise" required></textarea>
 
             <label for="num_rue">Numéro de rue :</label>
             <input type="text" name="num_rue" required>

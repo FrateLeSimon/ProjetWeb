@@ -1,9 +1,9 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
-
+ <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
 <html>
     <head>
-        <title>StaJ</title>
+        <title>StaJ Entreprises</title>
         <meta charset="utf-8">
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
@@ -38,11 +38,11 @@
     } else {
         $entreprises = $entrepriseController->getEntreprises($start_from, $records_per_page);
     }
-
+    
     foreach ($entreprises as $entreprise) {
             echo '<section class="sect"> <div class="container">';
             echo '<div class="text"><h1>' . $entreprise->nom_entreprise . '</h1>';
-            echo '<p>' . $entreprise->description  .'</p>';
+            echo '<p>' . $entreprise->description_entreprise  .'</p>';
 
             echo '<div class="location">';
             echo '<p id="icon"><i class="fa-solid fa-location-dot"></i><p>    ';
@@ -62,9 +62,16 @@
 
     $total_records = $entrepriseController->getTotalRecords();
     $total_pages = ceil($total_records / $records_per_page);
+
+
+    echo'<div class="pagination">';
+
     for ($i = 1; $i <= $total_pages; $i++) {
-        echo "<a href='afficher_entreprise.php?page=$i'>$i</a> ";
+        $class = ($i == $page) ? "current-page" : "";
+        echo "<a class='$class' href='afficher_entreprise.php?page=$i'>$i</a> ";
     }
+  
+    echo'</div>';
 
     $entrepriseController->closeConnection();
     ?>
