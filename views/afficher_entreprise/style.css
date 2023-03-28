@@ -6,7 +6,23 @@ body {
     background-size: cover;
     background-attachment: fixed;
   }
-  
+
+  .titre {
+    width: 47%; 
+    height: 30px;
+    margin: 0 auto; 
+    background-color: #4285f4; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 10px; 
+    padding: 20px; 
+    text-align: center;
+    margin-top: 20px;
+  }
+  .titre h1 {
+    margin: 0 auto; 
+  }
+
 .sect .container {
     position: relative;
     width: 90%;
@@ -216,6 +232,10 @@ input[type="submit"]:hover {
     .sect .container .buttons a {
         font-size: 0.8rem;
         padding: 0.6rem 1.2rem;
+      }
+    
+      .titre{
+        width: 90%;
       }
   }
 

@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="style.css">
 <body>
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 <?php
 require_once '../../controllers/EntrepriseController.php';
+
 
 $entrepriseController = new EntrepriseController();
 
@@ -32,3 +34,5 @@ for ($i = 1; $i <= $total_pages; $i++) {
 $entrepriseController->closeConnection();
 ?>
 </body>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>

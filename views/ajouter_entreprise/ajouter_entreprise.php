@@ -1,4 +1,5 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
 <html>
     <head>
@@ -63,3 +64,5 @@
     <script src="script.js"></script>
     </body>
 </html>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>

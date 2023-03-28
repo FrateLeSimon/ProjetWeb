@@ -124,12 +124,19 @@ class EntrepriseController {
         return null;
     }
 
-    public function getTotalRecords() {
-        $sql = "SELECT COUNT(*) AS total FROM Entreprise";
-        $result = $this->conn->query($sql);
-        $row = $result->fetch();
-        return $row['total'];
+   
+    public function getTotalRecords($search_query = null) {
+        if ($search_query) {
+            $sql = "SELECT COUNT(*) FROM entreprise WHERE nom_entreprise LIKE :search_query";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':search_query' => '%' . $search_query . '%']);
+        } else {
+            $sql = "SELECT COUNT(*) FROM entreprise";
+            $stmt = $this->conn->query($sql);
+        }
+        return $stmt->fetchColumn();
     }
+
     public function updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
         try {
             // Si un nouveau logo est fourni, mettez-le à jour, sinon conservez l'ancien
@@ -152,9 +159,7 @@ class EntrepriseController {
             $stmt->execute();
             
             // Vérifier si la mise à jour a affecté des lignes dans la base de données
-            if ($stmt->rowCount() == 0) {
-                throw new PDOException("La mise à jour de l'entreprise n'a affecté aucune ligne.");
-            }
+           
         
             // Récupérer l'ID de l'adresse associée à l'entreprise
             $sql = "SELECT id_adresse FROM est_localisé_à WHERE id_entreprise = :id_entreprise";
@@ -194,6 +199,18 @@ class EntrepriseController {
         $stmt->execute([':id_entreprise' => $id_entreprise]);
     }
 
+    public function getMoyenneEvaluationsByIdEntreprise($id_entreprise) {
+        $query = "SELECT AVG(fiabilite) AS moyenne_fiabilite,
+                         AVG(pertinence) AS moyenne_pertinence,
+                         AVG(ambiance) AS moyenne_ambiance,
+                         AVG(salaire) AS moyenne_salaire
+                  FROM a_été_dans
+                  WHERE id_entreprise = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id_entreprise]);
+    
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
     
     
         public function closeConnection() {

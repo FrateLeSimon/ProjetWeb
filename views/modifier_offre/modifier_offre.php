@@ -1,4 +1,5 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
 <html>
 <head>
@@ -7,6 +8,7 @@
     <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 
@@ -80,3 +82,5 @@
 
 </body>
 </html>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>

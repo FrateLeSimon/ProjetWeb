@@ -6,6 +6,8 @@
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
+        <link rel="manifest" href="../../manifest.json">
+        
     </head>
     <body>
       <header>
@@ -121,6 +123,17 @@
       </footer>
       <script src="../../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
       <script src="script.js"></script>
+      <script >
+         if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../../service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker enregistré avec succès:', registration);
+      })
+      .catch((error) => {
+        console.error('Échec de l\'enregistrement du Service Worker:', error);
+      });
+    }
+    </script>
     </body>
 </html>
 

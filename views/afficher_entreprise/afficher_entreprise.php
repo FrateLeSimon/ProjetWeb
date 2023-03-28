@@ -1,5 +1,5 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
- <?php require_once '../navfooter/navbar/navbar.php'; ?> 
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
 <html>
     <head>
@@ -44,6 +44,8 @@
         exit;
     }
     
+    echo'<div class="titre"><h1>Toutes les entreprises</h1></div>';
+
     foreach ($entreprises as $entreprise) {
             echo '<section class="sect"> <div class="container">';
             echo '<div class="text"><h1>' . $entreprise->nom_entreprise . '</h1>';
@@ -57,7 +59,7 @@
 
             echo '<div class="buttons">';
             echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $entreprise->id_entreprise . '">Voir plus</a>';
-            echo '<a href="../modifier_entreprise/modifier_entreprise.php?id=' . $entreprise->id_entreprise . '">Modifier</a>';
+    
             echo '</div>';
         
             echo '<img src="../../img/entreprise/' . $entreprise->logo . '" alt="image">';
@@ -65,7 +67,7 @@
             echo '</div> </div></section>';
     }
 
-    $total_records = $entrepriseController->getTotalRecords();
+    $total_records = isset($search_query) ? $entrepriseController->getTotalRecords($search_query) : $entrepriseController->getTotalRecords();
     $total_pages = ceil($total_records / $records_per_page);
 
 

@@ -49,11 +49,16 @@ class OffreController {
         return $offres;
     }
 
-    public function getTotalRecords() {
-        $sql = "SELECT COUNT(*) AS total FROM Offre";
-        $result = $this->conn->query($sql);
-        $row = $result->fetch();
-        return $row['total'];
+    public function getTotalRecords($search_query = null) {
+        if ($search_query) {
+            $sql = "SELECT COUNT(*) FROM offre INNER JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise WHERE offre.titre_offre LIKE :search_query";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':search_query' => '%' . $search_query . '%']);
+        } else {
+            $sql = "SELECT COUNT(*) FROM offre";
+            $stmt = $this->conn->query($sql);
+        }
+        return $stmt->fetchColumn();
     }
 
     public function getOffreById($id_offre) {
@@ -69,6 +74,16 @@ class OffreController {
         }
     
         return null;
+    }
+
+    public function getCompetencesByOffreId($id_offre) {
+        $query = "SELECT c.* FROM competence c
+                  JOIN a_besoin_de abd ON abd.id_competence = c.id_competence
+                  WHERE abd.id_offre = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id_offre]);
+    
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
     public function updateOffre($id_offre, $titre_offre, $remuneration, $date_offre, $duree, $desc_offre, $nbr_places) {
         $sql = "UPDATE offre SET titre_offre = :titre_offre, remuneration = :remuneration, date_offre = :date_offre, duree = :duree, desc_offre = :desc_offre, nbr_places = :nbr_places WHERE id_offre = :id_offre";
@@ -137,16 +152,17 @@ $stmt->execute();
         $offre = new Offre(
             $offreData['id_offre'],
             $offreData['titre_offre'],
-            $offreData['desc_offre'],
+            $offreData['remuneration'],
             $offreData['date_offre'],
             $offreData['duree'],
-            $offreData['remuneration'],
+            $offreData['desc_offre'],
             $offreData['nbr_places'],
             $offreData['id_entreprise'],
             $offreData['nom_entreprise'],
             $offreData['logo']
-
         );
+
+        
         array_push($offres, $offre);
     }
 

@@ -1,5 +1,6 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
+<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
 <html>
 <head>
@@ -72,3 +73,5 @@
 
 </body>
 </html>
+
+<?php require_once '../navfooter/footer/footer.php'; ?>
