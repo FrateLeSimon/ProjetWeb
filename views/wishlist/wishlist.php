@@ -1,9 +1,8 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
 <?php require_once '../../controllers/WishListController.php'; ?>
 <?php require_once '../../controllers/ApplyController.php'; ?>
-<?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
     <head>
         <title>StaJ Offres</title>
         <meta charset="utf-8">
@@ -14,10 +13,7 @@
     <body>
 
     <?php
-        echo "<form action='afficher_offre.php' method='get'>
-        <input type='text' name='search' placeholder='Rechercher une offre...'>
-        <input type='submit' value='Rechercher'>
-    </form>";
+
     
     $offreController = new OffreController();
     if (isset($_GET['delete'])) {
@@ -46,6 +42,13 @@
         header("Location: wishlist.php");
         exit;
     }
+
+    
+    require_once '../navfooter/navbar/navbar.php';
+    echo "<form action='afficher_offre.php' method='get'>
+    <input type='text' name='search' placeholder='Rechercher une offre...'>
+    <input type='submit' value='Rechercher'>
+</form>";
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 

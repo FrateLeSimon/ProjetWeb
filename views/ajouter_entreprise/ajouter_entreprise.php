@@ -1,7 +1,7 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
     <head>
         <title>Ajouter une entreprise</title>
         <meta charset="utf-8">

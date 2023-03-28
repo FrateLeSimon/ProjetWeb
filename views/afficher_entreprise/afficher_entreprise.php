@@ -1,7 +1,7 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang ='fr'>
     <head>
         <title>StaJ Entreprises</title>
         <meta charset="utf-8">
@@ -12,17 +12,22 @@
     <body>
 
     <?php
+        $PiloteController = new PiloteController;
+        if($PiloteController->getPiloteId($_COOKIE['user_id'])){    
     echo "<form action='afficher_entreprise.php' method='get'>
         <input type='text' name='search' placeholder='Rechercher une entreprise...'>
         <input type='submit' value='Rechercher'>
     </form>";
-    ?>
+        }
 
-    <div class ="add">
-    <a href="../ajouter_entreprise/ajouter_entreprise.php" class="add-button">Ajouter une entreprise</a>
-    </div>
-
-    <?php
+    require_once '../../controllers/GetPilote.php'; 
+    $EntrepriseController = new PiloteController;
+    if ($EntrepriseController->getPiloteId($_COOKIE['user_id'])) {
+        echo'<div class ="add">';
+        echo'<a href="../ajouter_entreprise/ajouter_entreprise.php" class="add-button">Ajouter une entreprise</a>';
+        echo'</div>';
+    }
+    
     $entrepriseController = new EntrepriseController();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $entrepriseController->handleRequest();

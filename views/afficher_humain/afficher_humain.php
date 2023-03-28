@@ -1,7 +1,7 @@
 <?php require_once '../../controllers/HumainController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?>
 
-<html>
+<html lang ='fr'>
 <head>
     <title>StaJ Utilisateurs</title>
     <meta charset="utf-8">
@@ -11,11 +11,14 @@
 </head>
 <body>
 <?php
-echo "<form method='GET' >
+
+$PiloteController = new PiloteController;
+if($PiloteController->getPiloteId($_COOKIE['user_id'])){    
+echo "<form method='GET' > 
         <input type='text' name='search' placeholder='Rechercher par nom...'>
         <input type='submit' value='Rechercher'>
       </form>";
-
+}
 $humainController = new HumainController();
 
 if (isset($_GET['search'])) {
@@ -33,10 +36,13 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start_from = ($page - 1) * $records_per_page;
 $humains = array_slice($humains, $start_from, $records_per_page);
 
+require_once '../../controllers/GetPilote.php'; 
+$EntrepriseController = new PiloteController;
+if ($EntrepriseController->getPiloteId($_COOKIE['user_id'])) {
 echo '<div class="add">
     <a href="../ajouter_humain/ajouter_humain.php" class="add-button">Ajouter un étudiant</a>
     </div>';
-
+}
 echo '<div class="titre"><h1>Tous les utilisateurs</h1></div>';
 
 foreach ($humains as $humain) {

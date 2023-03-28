@@ -1,7 +1,7 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
 <?php require_once '../../controllers/WishListController.php'; ?>
 <?php require_once '../../controllers/ApplyController.php'; ?>
-<?php require_once '../navfooter/navbar/navbar.php'; ?> 
+<?php require_once '../../controllers/GetPilote.php'; ?>
 
 <html>
     <head>
@@ -14,10 +14,7 @@
     <body>
 
     <?php
-        echo "<form action='afficher_offre.php' method='get'>
-        <input type='text' name='search' placeholder='Rechercher une offre...'>
-        <input type='submit' value='Rechercher'>
-    </form>";
+
     
     $offreController = new OffreController();
     if (isset($_GET['delete'])) {
@@ -47,6 +44,12 @@
         exit;
     }
 
+    
+    require_once '../navfooter/navbar/navbar.php';   
+    echo "<form action='afficher_offre.php' method='get'>
+        <input type='text' name='search' placeholder='Rechercher une offre...'>
+        <input type='submit' value='Rechercher'>
+        </form>";
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
     // Déterminez le nombre de résultats à récupérer par page
@@ -65,8 +68,9 @@
 
     $wishlistController = new WishListController();
     $etudiant_id = $wishlistController->getEtudiantId($_COOKIE['user_id']);
-
-    if ($_COOKIE['user_id'] == 9) {
+    
+    $PiloteController = new PiloteController;
+    if($PiloteController->getPiloteId($_COOKIE['user_id'])){    
     echo'<div class ="add">';
     echo'<a href="../ajouter_offre/ajouter_offre.php" class="add-button">Ajouter une offre</a>';
     echo'</div>';

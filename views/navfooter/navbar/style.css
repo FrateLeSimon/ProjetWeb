@@ -7,9 +7,10 @@
 
 body {
   height: 100vh;
-  background: #000;
+  /*background: #000;*/
 
 }
+
 
 li {
   list-style: none;
@@ -31,6 +32,9 @@ header {
 }
 
 .navbar {
+  backdrop-filter: blur(10px) brightness(0.7);
+  padding: 20px;
+  border-radius: 35px;
   width: 100%;
   height: 60px;
   max-width: 1200px;
@@ -38,6 +42,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .navbar .logo a {
@@ -67,16 +72,16 @@ header {
   font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: scale 0.2 ease;
+  transition: transform 0.2 ease;
 }
 
 .action_btn:hover {
-  scale: 1.05;
+  transform: 1.05;
   background-color: #fff;
 }
 
 .action_btn:active {
-  scale: 0.95;
+  transform: 0.95;
 }
 
 .dropdown_menu {
@@ -85,7 +90,7 @@ header {
   right: 2rem;
   top: 60px;
   height: 0;
-  width: 300px;
+  width: 100px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-radius: 10px;
@@ -94,7 +99,7 @@ header {
 }
 
 .dropdown_menu.open{
-  height: 240px;
+  height: 160px;
 }
 
 .dropdown_menu li {
@@ -131,4 +136,33 @@ header {
     left: 2rem;
     width: unset;
   }
+}
+
+.dropdown_menu {
+  position: fixed;
+  z-index: 9999;
+}
+
+.fas {
+  font-size: 2em;
+}
+
+.leftNav {
+  position: fixed;
+  top: 40;
+  left: 70;
+  width: 100%;
+  height: 100%;
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.leftNav .button {
+  font-size: 20px;
+  margin-right: auto;
+  margin-left: 20px;
+
 }

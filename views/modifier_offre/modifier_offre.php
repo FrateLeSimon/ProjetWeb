@@ -1,7 +1,7 @@
 <?php require_once '../../controllers/OffreController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang= 'fr'>
 <head>
     <title>Modifier l'offre</title>
     <meta charset="utf-8">

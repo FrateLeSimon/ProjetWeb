@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
 if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_token'])) {
     header("Location: http://localhost:3000/projetWeb/views/afficher_offre/afficher_offre.php");
@@ -6,17 +8,18 @@ if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_token'])) {
 ?>
 
 <?php require_once '../../controllers/loginController.php'; ?>
-<html>
+
+<html lang="fr">
     <head>
         <title>StaJ Login</title>
-        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
     </head>
     <body>
     <header>
-            <div class="logo"><a href="../vitrine/page_vitrine.php"><img src="../../img/logo/gros_logo.svg" ></a></div>
+            <div class="logo"><a href="../vitrine/page_vitrine.php"><img src="../../img/logo/gros_logo.svg" alt="logo"></a></div>
         </header>
         <section id="page1" class = "container">
             <h1>Bonjour !</h1>

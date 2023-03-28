@@ -1,5 +1,4 @@
 <?php
-require_once 'veriflogin.php';
 require_once '../../models/ApplyModel.php';
 
 class ApplyController {

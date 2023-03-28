@@ -5,12 +5,12 @@
 
 <html>
     <head>
-      <meta charset="UTF-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="http://localhost:3000/projetWeb//views/navfooter/navbar/style.css">
+      <link rel="icon" type="image/svg" href="http://localhost:3000/projetWeb/img/logo/petit_logo.svg">
+      <link rel="stylesheet" href="http://localhost:3000/projetWeb/views/navfooter/navbar/style.css">
       <link rel="stylesheet" href="http://localhost:3000/projetWeb/assets/vendors/fontawesome/css/all.min.css">
-      <link rel="manifest" href="../../manifest.json">
+      <link rel="manifest" href="http://localhost:3000/projetWeb/manifest.json">
     
 
     </head>
@@ -25,19 +25,17 @@
                     </div>
                     <ul class="links">
                         <li><a href="http://localhost:3000/projetWeb/views/comparatif/page_comparatif.php"><i class="fas fa-balance-scale-left"></i></a></li>
-                        <li><a href="http://localhost:3000/projetWeb/messagerie/page_messagerie.php"><i class="far fa-comment-alt"></i></a></li>
                         <li><a href="http://localhost:3000/projetWeb/views/wishlist/wishlist.php"><i class="fas fa-hand-holding-heart"></i></a></li>
                         <?php 
                             $id_user = $_COOKIE['user_id'];
                             echo '<li><a href="http://localhost:3000/projetWeb/views/fiche_humain/fiche_humain.php?id='.$id_user.'php"><i class="fas fa-user"></i></a></li>';
                         ?>
-                    </ul>
+                    </ul> 
                     <div class="toggle_btn">
                         <i class="fa-solid fa-bars"></i>
                     </div>
                     <div class="dropdown_menu">
                         <li><a href="http://localhost:3000/projetWeb/views/comparatif/page_comparatif.php"><i class="fas fa-balance-scale-left"></i></a></li>
-                        <li><a href="http://localhost:3000/projetWeb/messagerie/page_messagerie.php"><i class="far fa-comment-alt"></i></a></li>
                         <li><a href="http://localhost:3000/projetWeb/views/wishlist/wishlist.php"><i class="fas fa-hand-holding-heart"></i></a></li>
                         <?php 
                         $id_user = $_COOKIE['user_id'];
@@ -61,5 +59,16 @@
                 : 'fa-solid fa-bars';
             }
         </script>
+          <script >
+         if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../../service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker enregistré avec succès:', registration);
+      })
+      .catch((error) => {
+        console.error('Échec de l\'enregistrement du Service Worker:', error);
+      });
+    }
+    </script>
     </body>
 </html>

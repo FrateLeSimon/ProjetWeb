@@ -139,7 +139,7 @@ class EntrepriseController {
 
     public function updateEntreprise($id_entreprise, $nom_entreprise, $secteur_activite, $logo, $description_entreprise, $num_rue, $nom_rue, $ville, $code_postal, $pays) {
         try {
-            // Si un nouveau logo est fourni, mettez-le à jour, sinon conservez l'ancien
+            // mettez-le à jour, sinon conservez l'ancien
             if ($logo !== "") {
                 $logo_sql = ", logo = :logo";
             } else {
@@ -158,7 +158,7 @@ class EntrepriseController {
             }
             $stmt->execute();
             
-            // Vérifier si la mise à jour a affecté des lignes dans la base de données
+           
            
         
             // Récupérer l'ID de l'adresse associée à l'entreprise

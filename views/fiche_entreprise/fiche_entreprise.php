@@ -1,6 +1,6 @@
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
     <head>
         <title>Fiche entreprise</title>
         <meta charset="utf-8">
@@ -13,10 +13,12 @@
     <?php
     require_once '../../controllers/EntrepriseController.php';
     require_once '../../controllers/OffreController.php';
+    
     if (!isset($_GET['id'])) {
         header('Location: afficher_entreprise.php');
         exit;
     }
+
     $id_entreprise = (int)$_GET['id'];
     
     $entrepriseController = new EntrepriseController();

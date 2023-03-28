@@ -10,7 +10,7 @@
     </head>
     <body>
       <div class='texte'>
-      <!-- Je souhaite faire une page où je liste toutes les cgu -->
+  >
       <h1>Conditions Générales d'Utilisation</h1>
       <p>Bienvenue sur STAJ ! Ces conditions générales d'utilisation ("CGU") décrivent les termes et conditions qui s'appliquent à votre utilisation de ce site web et de tous les services, fonctionnalités, contenus, applications et produits associés (collectivement, le "Site"). Veuillez lire attentivement ces CGU avant d'utiliser le Site. En utilisant le Site, vous acceptez d'être lié par ces CGU. Si vous n'acceptez pas ces CGU, vous ne devez pas utiliser le Site.</p>	
       <ol>

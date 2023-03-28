@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang ='fr'>
 <head>
     <meta charset="UTF-8">
     <title>Comparer des offres</title>  

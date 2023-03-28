@@ -1,6 +1,6 @@
 {
-  "name": "CTS",
-  "short_name": "CTS",
+  "name": "Staj",
+  "short_name": "Staj",
   "description": "Pour trouver les meilleurs stages :)",
   "start_url": ".",
   "display": "standalone",
@@ -8,12 +8,12 @@
   "theme_color": "#0072c6",
   "icons": [
     {
-      "src": "../assets/img/logoSquare.png",
+      "src": "./img/logo/logo_petit.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../assets/img/logoSquare.png",
+      "src": "./img/logo/logo_grand.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

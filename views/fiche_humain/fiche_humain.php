@@ -1,6 +1,6 @@
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
 <head>
     <title>Fiche utilisateur</title>
     <meta charset="utf-8">

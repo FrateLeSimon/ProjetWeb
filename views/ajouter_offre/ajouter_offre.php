@@ -2,7 +2,7 @@
 <?php require_once '../../controllers/EntrepriseController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
 <head>
     <title>Créer une offre</title>
     <meta charset="utf-8">
@@ -30,10 +30,10 @@
             </select>
 
             <label for="titre_offre">Titre de l'offre :</label>
-            <input type="text" name="titre_offre" required>
+            <input type="text" name="titre_offre"required>
 
             <label for="remuneration">Rémunération :</label>
-            <input type="number" name="remuneration" required>
+            <input type="number" name="remuneration"  required>
 
             <label for="date_offre">Date de l'offre :</label>
             <input type="date" name="date_offre" required>
@@ -46,7 +46,7 @@
 
             <label for="nbr_places">Nombre de places :</label>
             <input type="number" name="nbr_places" required>
-
+            <label for="create"></label>
             <input type="hidden" name="create" value="1">
             <input type="submit" value="Créer l'offre">
             <a id="return" href="../afficher_offre/afficher_offre.php">Retour</a>

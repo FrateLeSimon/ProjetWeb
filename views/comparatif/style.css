@@ -97,6 +97,7 @@ body {
     margin: 20px;
     border-radius: 25px;
     width: 400px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
 }
 
 .offre img {

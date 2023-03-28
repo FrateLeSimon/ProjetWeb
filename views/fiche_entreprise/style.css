@@ -224,7 +224,7 @@ button:hover {
     .sect .container {
       flex-direction: column;
       justify-content: center;
-      height: 700px;
+      height: 800px;
       width: 100%;
     }
     .sect .container img {

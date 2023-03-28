@@ -1,11 +1,10 @@
 
 
-const cacheName = 'cts-pwa';
+const cacheName = 'staj-pwa';
 const filesToCache = [
-  './pages/index.php',
-  './assets/CSS/style.css',
-  './assets/img/logoSquare.png',
-  './manifest.json'
+  './'
+
+  
 ];
 
 self.addEventListener('install', function(event) {

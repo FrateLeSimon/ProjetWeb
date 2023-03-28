@@ -3,7 +3,7 @@
 <?php require_once '../../controllers/ApplyController.php'; ?>
 <?php require_once '../../controllers/WishListController.php'; ?>
 
-<html>
+<html lang='fr'>
     <head>
         <title>Fiche offre</title>
         <meta charset="utf-8">

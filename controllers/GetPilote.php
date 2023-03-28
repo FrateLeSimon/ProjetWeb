@@ -1,6 +1,6 @@
 <?php
-//Pour savoir si c'est un pilote
-class EntrepriseController {
+
+class PiloteController {
     private $db_host = 'localhost';
     private $db_name = 'bdd_staj';
     private $db_user = 'root';
@@ -11,16 +11,23 @@ class EntrepriseController {
         $this->conn = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_pass);
     }
 
-    public function getOffre($id_etudiant) {
-        $sql = "";
+    public function getPiloteId($user_id) {
+        $sql = "SELECT id_pilote FROM humain LEFT JOIN pilote ON humain.id_humain = pilote.id_humain WHERE humain.id_humain = :user_id;";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':id_etudiant' => $id_etudiant]);
+        $stmt->execute([':user_id' => $user_id]);
+        
     
-        $offres = [];
         while ($row = $stmt->fetch()) {
-            $offre = new offre($row['titre_offre']);
-            $offres[] = $offre;
+            $id_pilote = $row['id_pilote'];
         }
-        return $offres;
+        
+        $sql = "SELECT admin FROM `humain` Where id_humain = :user_id;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+
+        while ($row = $stmt->fetch()) {
+            $admin = $row['admin'];
+        }
+        return $id_pilote > 0 || $admin == 0x01;
     }
 }

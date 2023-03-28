@@ -1,10 +1,10 @@
 <?php require_once '../../controllers/HumainController.php'; ?>
 <?php require_once '../navfooter/navbar/navbar.php'; ?> 
 
-<html>
+<html lang='fr'>
 <head>
     <title>Modifier l'étudiant</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">

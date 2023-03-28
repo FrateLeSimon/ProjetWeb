@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Trouve ton StaJ !</title>
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
@@ -12,7 +12,7 @@
     <body>
       <header>
         <div class="navbar">
-            <div class="logo"><a href="page_vitrine.php"><img src="../../img/logo/gros_logo.svg" ></a></div>
+            <div class="logo"><a href="page_vitrine.php"><img alt ="le logo" src="../../img/logo/gros_logo.svg" ></a></div>
             <ul class="links">
                 <li><a href="#contact" id="btn_contact1" a>Nous contacter</a></li>
                 <li><a href="#" id="btn_popup1" a>À propos</a></li>
@@ -123,6 +123,7 @@
       </footer>
       <script src="../../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
       <script src="script.js"></script>
+      
       <script >
          if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../../service-worker.js')
