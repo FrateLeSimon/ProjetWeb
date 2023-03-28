@@ -12,7 +12,7 @@
 <body>
 <?php
 echo "<form method='GET' >
-        <input type='text' name='search' placeholder='Rechercher par nom'>
+        <input type='text' name='search' placeholder='Rechercher par nom...'>
         <input type='submit' value='Rechercher'>
       </form>";
 

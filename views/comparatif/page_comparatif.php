@@ -61,33 +61,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Afficher les détails des offres
     if ($offre1 && $offre2) {
-        echo '<section class="sect"> <div class="container">';
-        echo '<div class="text"><h1>' . $offre1->titre_offre . '</h1>';
-        echo '<p><b>Entreprise :</b> ' . $offre1->nom_entreprise  .'</p>';
-        echo '<p><b>Date :</b> ' . $offre1->date_offre  .'</p>';
-        echo '<p><b>Durée :</b> ' . $offre1->duree . ' semaines </p>';
-        echo '<p><b>Rémunération :</b> ' . $offre1->remuneration . ' €</p>';
-        echo '<p><b>Nombre de places :</b> ' . $offre1->nbr_places  .'</p>';
-        echo '<p><b>Description :</b><br> ' . $offre1->desc_offre  .'</p>';
-        echo '<div class="buttons">';
-        echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre1->id_offre . '">Voir plus</a>';
-        echo '</div></div>';
-        echo '<img src="../../img/entreprise/' . $offre1->logo . '" alt="image">';
-        echo '</div></section>';
-        
-        echo '<section class="sect"> <div class="container">';
-        echo '<div class="text"><h1>' . $offre2->titre_offre . '</h1>';
-        echo '<p><b>Entreprise :</b> ' . $offre2->nom_entreprise  .'</p>';
-        echo '<p><b>Date :</b> ' . $offre2->date_offre  .'</p>';
-        echo '<p><b>Durée :</b> ' . $offre2->duree . ' semaines </p>';
-        echo '<p><b>Rémunération :</b> ' . $offre2->remuneration . ' €</p>';
-        echo '<p><b>Nombre de places :</b> ' . $offre2->nbr_places  .'</p>';
-        echo '<p><b>Description :</b><br> ' . $offre2->desc_offre  .'</p>';
-        echo '<div class="buttons">';
-        echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre2->id_offre . '">Voir plus</a>';
-        echo '</div></div>';
-        echo '<img src="../../img/entreprise/' . $offre2->logo . '" alt="image">';
-        echo '</div></section>';
+      echo '<div class="container">';
+
+      echo '<div class="offre">';
+      echo'<img src="../../img/entreprise/' . $offre1->logo . '" alt="image">';
+      echo '<h1>' . $offre1->titre_offre . '</h1>';
+      echo '<p><b>Entreprise :</b> ' . $offre1->nom_entreprise .'</p>';
+      echo '<p><b>Date :</b> ' . $offre1->date_offre .'</p>';
+      echo '<p><b>Durée :</b> ' . $offre1->duree . ' semaines </p>';
+      echo '<p><b>Rémunération :</b> ' . $offre1->remuneration . ' €</p>';
+      echo '<p><b>Nombre de places :</b> ' . $offre1->nbr_places .'</p>';
+      echo '<p><b>Description :</b><br> ' . $offre1->desc_offre .'</p>';
+      echo '<div class="buttons">';
+      echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre1->id_offre . '">Voir plus</a>';
+      echo '</div>';
+      
+      echo '</div>';
+      
+      echo '<div class="offre">';
+      echo'<img src="../../img/entreprise/' . $offre2->logo . '" alt="image">';
+      echo '<h1>' . $offre2->titre_offre . '</h1>';
+      echo '<p><b>Entreprise :</b> ' . $offre2->nom_entreprise .'</p>';
+      echo '<p><b>Date :</b> ' . $offre2->date_offre .'</p>';
+      echo '<p><b>Durée :</b> ' . $offre2->duree . ' semaines </p>';
+      echo '<p><b>Rémunération :</b> ' . $offre2->remuneration . ' €</p>';
+      echo '<p><b>Nombre de places :</b> ' . $offre2->nbr_places .'</p>';
+      echo '<p><b>Description :</b><br> ' . $offre2->desc_offre .'</p>';
+      echo '<div class="buttons">';
+      echo '<a href="../fiche_offre/fiche_offre.php?id=' . $offre2->id_offre . '">Voir plus</a>';
+      echo '</div>';
+      
+      echo '</div>';
+      
+      echo '</div>';
     }
 }
 ?>

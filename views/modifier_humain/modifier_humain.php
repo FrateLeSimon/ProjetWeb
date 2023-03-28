@@ -37,7 +37,6 @@
         <input type="file" name="lettre_lm" accept="application/pdf">
 
         <label for="id_promo">Promotion :</label>
-        <label for="id_promo">Promotion :</label>
         <select name="id_promo">
             // affichage de toute les promotions dans un menu déroulant
             <?php foreach ($promos as $promo) { ?>

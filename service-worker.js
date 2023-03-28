@@ -1,28 +1,44 @@
-self.addEventListener('install', (event) => {
-    console.log('[Service Worker] Installation');
-  });
-  
-  self.addEventListener('activate', (event) => {
-    console.log('[Service Worker] Activation');
-  });
-  const CACHE_NAME = 'mon-cache-v1';
-const CACHE_ASSETS = [
-  '/',
-  '/vitrine/page_vitrine.html',
-  
+
+
+const cacheName = 'cts-pwa';
+const filesToCache = [
+  './pages/index.php',
+  './assets/CSS/style.css',
+  './assets/img/logoSquare.png',
+  './manifest.json'
 ];
 
-self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installation');
-
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Mise en cache des ressources');
-      return cache.addAll(CACHE_ASSETS);
-    })
+    caches.open(cacheName)
+      .then(function(cache) {
+        return cache.addAll(filesToCache);
+      })
   );
 });
 
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
+  );
+});
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] Activation');
 });
+
+
+self.addEventListener('fetch', (event) => {
+    console.log('[Service Worker] Récupération', event.request.url);
+  
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  });
