@@ -5,6 +5,7 @@
         <link rel="icon" type="image/svg" href="../../img/logo/petit_logo.svg">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="../../assets/vendors/fontawesome/css/all.min.css">
+        <link rel="manifest" href="/manifest.json">
     </head>
     <body>
         <header>
