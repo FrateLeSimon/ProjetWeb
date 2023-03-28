@@ -48,6 +48,7 @@ if (!$offre) {
         echo '</div>';
         echo '<div class="buttons">';
         echo '<button onclick="javascript:history.back()">Retour</button>';
+        
         echo '<a href="../modifier_offre/modifier_offre.php?id=' . $offre->id_offre . '" id="ent">Modifier</a>';
         echo '<a href="../fiche_entreprise/fiche_entreprise.php?id=' . $offre->id_entreprise . '" id="ent">Fiche entreprise</a>';
         echo '</div>';
